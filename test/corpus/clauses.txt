@@ -1,0 +1,160 @@
+================================================================================
+Fact
+================================================================================
+
+parent(tom, bob).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (atom)
+        (atom)))
+    (end)))
+
+================================================================================
+Rule with if-then-else and negation
+================================================================================
+
+max(X, Y, Z) :-
+    (   X >= Y
+    ->  Z = X
+    ;   \+ X < Y, Z = Y
+    ).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (variable)
+        (variable)
+        (variable)))
+    (operator)
+    (parenthesized_term
+      (binary_operation
+        (binary_operation
+          (binary_operation
+            (variable)
+            (operator)
+            (variable))
+          (operator)
+          (binary_operation
+            (variable)
+            (operator)
+            (variable)))
+        (operator)
+        (binary_operation
+          (prefix_operation
+            (operator)
+            (binary_operation
+              (variable)
+              (operator)
+              (variable)))
+          (operator)
+          (binary_operation
+            (variable)
+            (operator)
+            (variable)))))
+    (end)))
+
+================================================================================
+DCG rule
+================================================================================
+
+greeting --> [hello], name.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (atom)
+    (operator)
+    (binary_operation
+      (list
+        (atom))
+      (operator)
+      (atom))
+    (end)))
+
+================================================================================
+Single sided unification with guard
+================================================================================
+
+len([_|T], N0), N0 > 0 => len(T, N).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (binary_operation
+      (compound_term
+        (atom)
+        (arguments
+          (list
+            (variable)
+            (variable))
+          (variable)))
+      (operator)
+      (binary_operation
+        (variable)
+        (operator)
+        (integer)))
+    (operator)
+    (compound_term
+      (atom)
+      (arguments
+        (variable)
+        (variable)))
+    (end)))
+
+================================================================================
+Module qualified head
+================================================================================
+
+user:portray(X) :- print(X).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (binary_operation
+      (atom)
+      (operator)
+      (compound_term
+        (atom)
+        (arguments
+          (variable))))
+    (operator)
+    (compound_term
+      (atom)
+      (arguments
+        (variable)))
+    (end)))
+
+================================================================================
+Atom fact and cut
+================================================================================
+
+done.
+stop :- !, fail.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (atom)
+    (end))
+  (clause
+    (atom)
+    (operator)
+    (binary_operation
+      (atom)
+      (operator)
+      (atom))
+    (end)))

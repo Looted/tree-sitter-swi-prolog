@@ -1,0 +1,271 @@
+================================================================================
+Numbers
+================================================================================
+
+n(1, -2, 3.14, 1.0e10, 0x1F, 0o17, 0b101, 16'FF, 0'a, 0' , 1 000 000, 1r3, 1.0Inf).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (integer)
+        (prefix_operation
+          (operator)
+          (integer))
+        (float)
+        (float)
+        (integer)
+        (integer)
+        (integer)
+        (integer)
+        (char_code)
+        (char_code)
+        (integer)
+        (rational)
+        (float)))
+    (end)))
+
+================================================================================
+Strings and quoted atoms
+================================================================================
+
+s("double", `back`, 'it''s', 'esc\'aped', "multi
+line").
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (string)
+        (back_quoted_string)
+        (atom)
+        (atom)
+        (string)))
+    (end)))
+
+================================================================================
+Lists and tails
+================================================================================
+
+l([], [a], [a, b|T], [-|Rest], "codes").
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (atom)
+        (list
+          (atom))
+        (list
+          (atom)
+          (atom)
+          (variable))
+        (list
+          (atom)
+          (variable))
+        (string)))
+    (end)))
+
+================================================================================
+Dicts and functional notation
+================================================================================
+
+d(D, V) :- D = _{name: "x", 1: one}, V = D.name, W = D.put(k, 1), Z = D.0.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (variable)
+        (variable)))
+    (operator)
+    (binary_operation
+      (binary_operation
+        (variable)
+        (operator)
+        (dict
+          (variable)
+          (dict_pair
+            (atom)
+            (string))
+          (dict_pair
+            (integer)
+            (atom))))
+      (operator)
+      (binary_operation
+        (binary_operation
+          (variable)
+          (operator)
+          (dict_call
+            (variable)
+            (atom)))
+        (operator)
+        (binary_operation
+          (binary_operation
+            (variable)
+            (operator)
+            (dict_call
+              (variable)
+              (compound_term
+                (atom)
+                (arguments
+                  (atom)
+                  (integer)))))
+          (operator)
+          (binary_operation
+            (variable)
+            (operator)
+            (dict_call
+              (variable)
+              (integer))))))
+    (end)))
+
+================================================================================
+Operators as atoms
+================================================================================
+
+ops(-, +, ?, (:-), (=), [-]).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (atom)
+        (atom)
+        (atom)
+        (parenthesized_term
+          (atom))
+        (parenthesized_term
+          (atom))
+        (list
+          (atom))))
+    (end)))
+
+================================================================================
+Curly terms and parenthesised clauses
+================================================================================
+
+c({a, b}, {}, (H :- B)).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (curly_term
+          (binary_operation
+            (atom)
+            (operator)
+            (atom)))
+        (atom)
+        (parenthesized_term
+          (binary_operation
+            (variable)
+            (operator)
+            (variable)))))
+    (end)))
+
+================================================================================
+Library operators
+================================================================================
+
+fd(X, Y) :- X #= Y + 1, X in 0..9, rdf(S, p, V^^xsd:string).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (variable)
+        (variable)))
+    (operator)
+    (binary_operation
+      (binary_operation
+        (variable)
+        (operator)
+        (binary_operation
+          (variable)
+          (operator)
+          (integer)))
+      (operator)
+      (binary_operation
+        (binary_operation
+          (variable)
+          (operator)
+          (binary_operation
+            (integer)
+            (operator)
+            (integer)))
+        (operator)
+        (compound_term
+          (atom)
+          (arguments
+            (variable)
+            (atom)
+            (binary_operation
+              (binary_operation
+                (variable)
+                (operator)
+                (atom))
+              (operator)
+              (atom))))))
+    (end)))
+
+================================================================================
+Unknown symbolic operator
+================================================================================
+
+r(X) :- X ===> y.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (variable)))
+    (operator)
+    (binary_operation
+      (variable)
+      (operator)
+      (atom))
+    (end)))
+
+================================================================================
+Comments
+================================================================================
+
+% line comment
+/* block
+   comment */
+a. % trailing
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (comment)
+  (comment)
+  (clause
+    (atom)
+    (end))
+  (comment))

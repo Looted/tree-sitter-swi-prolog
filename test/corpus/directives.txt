@@ -1,0 +1,149 @@
+================================================================================
+Module and imports
+================================================================================
+
+:- module(lists_extra, [sum/2, op(700, xfx, ===>)]).
+:- use_module(library(lists)).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (directive
+    (compound_term
+      (atom)
+      (arguments
+        (atom)
+        (list
+          (binary_operation
+            (atom)
+            (operator)
+            (integer))
+          (compound_term
+            (atom)
+            (arguments
+              (integer)
+              (atom)
+              (atom))))))
+    (end))
+  (directive
+    (compound_term
+      (atom)
+      (arguments
+        (compound_term
+          (atom)
+          (arguments
+            (atom)))))
+    (end)))
+
+================================================================================
+Declarations
+================================================================================
+
+:- dynamic counter/1, seen/2.
+:- discontiguous foo/3.
+:- meta_predicate maplist(1, ?).
+:- table path/2.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (directive
+    (prefix_operation
+      (operator)
+      (binary_operation
+        (binary_operation
+          (atom)
+          (operator)
+          (integer))
+        (operator)
+        (binary_operation
+          (atom)
+          (operator)
+          (integer))))
+    (end))
+  (directive
+    (prefix_operation
+      (operator)
+      (binary_operation
+        (atom)
+        (operator)
+        (integer)))
+    (end))
+  (directive
+    (prefix_operation
+      (operator)
+      (compound_term
+        (atom)
+        (arguments
+          (integer)
+          (atom))))
+    (end))
+  (directive
+    (prefix_operation
+      (operator)
+      (binary_operation
+        (atom)
+        (operator)
+        (integer)))
+    (end)))
+
+================================================================================
+Query and shebang
+================================================================================
+
+#!/usr/bin/env swipl
+?- main.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (shebang)
+  (query
+    (atom)
+    (end)))
+
+================================================================================
+Unit test block
+================================================================================
+
+:- begin_tests(arith).
+test(add, [true(X == 3)]) :- X is 1 + 2.
+:- end_tests(arith).
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (directive
+    (compound_term
+      (atom)
+      (arguments
+        (atom)))
+    (end))
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (atom)
+        (list
+          (compound_term
+            (atom)
+            (arguments
+              (binary_operation
+                (variable)
+                (operator)
+                (integer)))))))
+    (operator)
+    (binary_operation
+      (variable)
+      (operator)
+      (binary_operation
+        (integer)
+        (operator)
+        (integer)))
+    (end))
+  (directive
+    (compound_term
+      (atom)
+      (arguments
+        (atom)))
+    (end)))
