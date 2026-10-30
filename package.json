@@ -35,6 +35,9 @@
     "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
+    "kibi-cli": "^2.38.0",
+    "kibi-core": "^0.27.0",
+    "kibi-mcp": "^3.22.0",
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.25.0",
     "tree-sitter-cli": "^0.26.7",

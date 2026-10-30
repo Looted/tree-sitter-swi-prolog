@@ -46,3 +46,12 @@ zig-out/
 *.tgz
 *.zip
 *.jar
+.kb/branches/
+.kb/recovery/
+.kb/proof/runs/
+.kb/briefs/
+.kb/migrations/
+.kb/symbol-coordinates.yaml
+.kb/usage.log
+.env.kibi
+kibi-report/

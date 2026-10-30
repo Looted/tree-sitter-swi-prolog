@@ -1,0 +1,3 @@
+[mcp_servers.kibi]
+command = "npx"
+args = ["--no-install", "kibi-mcp"]

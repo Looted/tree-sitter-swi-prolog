@@ -1,5 +1,7 @@
 # tree-sitter-swi-prolog
 
+[![Kibi requirement health](https://looted.github.io/tree-sitter-swi-prolog/kibi-report/badge.svg)](https://looted.github.io/tree-sitter-swi-prolog/kibi-report/)
+
 [SWI-Prolog](https://www.swi-prolog.org) grammar for [tree-sitter](https://tree-sitter.github.io/tree-sitter/).
 
 It parses the Prolog that real SWI-Prolog projects are written in, not only ISO core:
