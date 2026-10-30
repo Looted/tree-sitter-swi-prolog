@@ -10,6 +10,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  release-check:
+    name: Check versions and changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Check that the manifests and CHANGELOG.md agree
+        run: scripts/release-check.sh
+
   test:
     name: Test parser
     runs-on: ${{matrix.os}}

@@ -66,6 +66,15 @@ node scripts/check-corpus.mjs path/to/prolog/sources
 
 `grammar.js` lists the operator tables at the top. To support another library's operators, add them to the matching table with their SWI-Prolog priority and type.
 
+## Releasing
+
+Changes are listed in [CHANGELOG.md](CHANGELOG.md). To release:
+
+1. In a pull request, bump the version (`npx tree-sitter version X.Y.Z`, then `npm install --package-lock-only`) and add a `## X.Y.Z` section to `CHANGELOG.md`. CI checks that the manifests and the changelog agree.
+2. Merge it, then run the **Release** workflow on `main` from the Actions tab.
+
+The workflow refuses a version that is already tagged. It creates the `vX.Y.Z` tag and GitHub release, with the changelog section as notes and the Wasm parser attached, and publishes to npm, crates.io and PyPI. Don't create tags or releases by hand.
+
 ## License
 
 MIT
