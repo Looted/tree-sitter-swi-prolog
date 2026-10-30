@@ -68,12 +68,13 @@ node scripts/check-corpus.mjs path/to/prolog/sources
 
 ## Releasing
 
-Changes are listed in [CHANGELOG.md](CHANGELOG.md). To release:
+Releases are made from [changesets](https://github.com/changesets/changesets).
 
-1. In a pull request, bump the version (`npx tree-sitter version X.Y.Z`, then `npm install --package-lock-only`) and add a `## X.Y.Z` section to `CHANGELOG.md`. CI checks that the manifests and the changelog agree.
-2. Merge it, then run the **Release** workflow on `main` from the Actions tab.
+1. A pull request with a user-visible change adds a changeset: run `npx changeset`, pick the bump and describe the change for users.
+2. When it is merged, the **Release** workflow opens (or updates) a **Version packages** pull request that applies all pending changesets: it bumps the version in every manifest and writes their text into `CHANGELOG.md`.
+3. Merging that pull request releases the new version: the `vX.Y.Z` tag and GitHub release (with the changelog section as notes and the Wasm parser attached), npm, crates.io and PyPI.
 
-The workflow refuses a version that is already tagged. It creates the `vX.Y.Z` tag and GitHub release, with the changelog section as notes and the Wasm parser attached, and publishes to npm, crates.io and PyPI. Don't create tags or releases by hand.
+The release step publishes only what is missing for the current version, so if a registry fails, run the **Release** workflow again from the Actions tab. Don't create tags or releases by hand.
 
 ## License
 

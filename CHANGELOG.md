@@ -1,6 +1,4 @@
-# Changelog
-
-All notable changes to tree-sitter-swi-prolog are listed here. Versions follow [Semantic Versioning](https://semver.org/).
+# tree-sitter-swi-prolog
 
 ## 0.1.0 (2026-10-30)
 

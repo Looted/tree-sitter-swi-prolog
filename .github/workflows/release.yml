@@ -1,24 +1,23 @@
 name: Release
 
-# Publishes the version in package.json. To release:
+# Every push to main runs this workflow (it can also be run by hand from the
+# Actions tab):
 #
-#   1. In a pull request, bump the version in package.json, package-lock.json,
-#      tree-sitter.json, Cargo.toml and pyproject.toml (`npx tree-sitter
-#      version X.Y.Z` then `npm install --package-lock-only`) and add a
-#      '## X.Y.Z' section to CHANGELOG.md. CI checks that they agree.
-#   2. Merge it, then run this workflow on main from the Actions tab.
+#   - While .changeset/ holds changesets, it opens or updates the "Version
+#     packages" pull request, which applies them: it bumps the version in
+#     every manifest and moves their text into CHANGELOG.md.
+#   - Once that pull request is merged (no changesets left), it releases the
+#     version in package.json everywhere it is still missing: the vX.Y.Z tag
+#     and GitHub release (notes from CHANGELOG.md, with the Wasm parser and
+#     the source tarball attached), npm, crates.io and PyPI.
 #
-# The workflow refuses a version whose tag already exists, creates the vX.Y.Z
-# tag and GitHub release (notes from CHANGELOG.md, with the Wasm parser and
-# the full source tarball attached) on the commit it checked, and publishes
-# that commit to npm, crates.io and PyPI.
-#
-# A vX.Y.Z tag pushed by hand runs the same checks and publish steps.
+# Each target is checked separately, so a run that failed half-way is fixed
+# by running the workflow again. Don't create tags or releases by hand.
 
 on:
-  workflow_dispatch:
   push:
-    tags: ['v*']
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,35 +26,89 @@ concurrency:
   group: release
   cancel-in-progress: false
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
+  version:
+    name: Open the version pull request
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      pending: ${{ steps.changesets.outputs.hasChangesets }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --omit optional
+
+      - name: Create or update the pull request
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: npm run version-packages
+          title: Version packages
+          commit: Version packages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  plan:
+    name: Find what is not released yet
+    needs: version
+    if: needs.version.outputs.pending == 'false'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.plan.outputs.version }}
+      github: ${{ steps.plan.outputs.github }}
+      npm: ${{ steps.plan.outputs.npm }}
+      crates: ${{ steps.plan.outputs.crates }}
+      pypi: ${{ steps.plan.outputs.pypi }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Check each target
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(scripts/release-check.sh)
+          name=$(node -p "require('./package.json').name")
+          missing() { if "$@" > /dev/null 2>&1; then echo false; else echo true; fi; }
+          {
+            echo "version=$version"
+            echo "github=$(missing gh release view "v$version")"
+            echo "npm=$(missing npm view "$name@$version" version --json)"
+            echo "crates=$(missing curl -fsS -A "$GITHUB_REPOSITORY release workflow" \
+              "https://crates.io/api/v1/crates/$name/$version")"
+            echo "pypi=$(missing curl -fsS "https://pypi.org/pypi/$name/$version/json")"
+          } | tee -a "$GITHUB_OUTPUT"
+
   github:
-    name: Check, tag and create the GitHub release
+    name: Tag and create the GitHub release
+    needs: plan
+    if: needs.plan.outputs.github == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: write
       id-token: write
       attestations: write
-    outputs:
-      tag: ${{ steps.tag.outputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Check the version and changelog
-        id: tag
-        run: |
-          if [ "$GITHUB_REF_TYPE" = tag ]; then
-            version=$(scripts/release-check.sh --tag "$GITHUB_REF_NAME")
-          else
-            if [ "$GITHUB_REF" != refs/heads/main ]; then
-              echo "Run the release from main, not $GITHUB_REF_NAME." >&2
-              exit 1
-            fi
-            version=$(scripts/release-check.sh --untagged)
-          fi
-          echo "tag=v$version" >> "$GITHUB_OUTPUT"
-          scripts/release-notes.sh "$version" > "$RUNNER_TEMP/notes.md"
 
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
@@ -76,34 +129,103 @@ jobs:
       - name: Create the release
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.tag.outputs.tag }}
+          VERSION: ${{ needs.plan.outputs.version }}
         run: |
-          if gh release view "$TAG" > /dev/null 2>&1; then
-            # A release made by hand in the web UI: attach the files and fill in empty notes.
-            gh release upload "$TAG" *.wasm tree-sitter-swi-prolog.tar.gz --clobber
-            if [ -z "$(gh release view "$TAG" --json body --jq .body)" ]; then
-              gh release edit "$TAG" --notes-file "$RUNNER_TEMP/notes.md"
-            fi
-          else
-            gh release create "$TAG" *.wasm tree-sitter-swi-prolog.tar.gz \
-              --target "$GITHUB_SHA" --title "tree-sitter-swi-prolog ${TAG#v}" \
-              --notes-file "$RUNNER_TEMP/notes.md"
-          fi
+          scripts/release-notes.sh "$VERSION" > "$RUNNER_TEMP/notes.md"
+          gh release create "v$VERSION" *.wasm tree-sitter-swi-prolog.tar.gz \
+            --target "$GITHUB_SHA" --title "tree-sitter-swi-prolog $VERSION" \
+            --notes-file "$RUNNER_TEMP/notes.md"
+
+  npm_build:
+    name: Build NodeJS binaries on ${{ matrix.os }}
+    needs: plan
+    if: needs.plan.outputs.npm == 'true'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        # No windows-11-arm: node-gyp cannot find the Visual Studio 2026 build
+        # tools on that image. Windows on Arm installs build from source.
+        os:
+          - windows-2022
+          - ubuntu-24.04
+          - ubuntu-24.04-arm
+          - macos-15
+          - macos-15-intel
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --omit optional
+
+      - name: Build binary
+        run: npx prebuildify -t 20.19.5
+
+      - name: Upload binaries
+        uses: actions/upload-artifact@v4
+        with:
+          path: prebuilds/**
+          name: prebuilds-${{ matrix.os }}
+          retention-days: 2
 
   npm:
-    needs: github
-    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
-    secrets:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    name: Publish to npm
+    needs: [plan, npm_build]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/tree-sitter-swi-prolog
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v2
+
+      - name: Build the Wasm parser
+        run: tree-sitter build --wasm
+
+      - name: Download binaries
+        uses: actions/download-artifact@v4
+        with:
+          path: prebuilds
+          pattern: prebuilds-*
+          merge-multiple: true
+
+      - name: Check the package
+        run: |
+          find prebuilds -type f | sort
+          npm pack --dry-run
+
+      - name: Publish
+        run: npm publish --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   crates:
-    needs: github
+    needs: plan
+    if: needs.plan.outputs.crates == 'true'
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@main
     secrets:
       CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   pypi:
-    needs: github
+    needs: plan
+    if: needs.plan.outputs.pypi == 'true'
     uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@main
     secrets:
       PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
