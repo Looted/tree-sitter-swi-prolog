@@ -17,15 +17,15 @@ id: TEST-queries-highlights
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-2831336dcd90c40c136c95b6
+    receipt_id: PR-7380e1358ec67536a0b4d714
     test_id: TEST-queries-highlights
     scope: end_to_end
     outcome: passed
-    code_snapshot: 7b85d4f642b5ec9822107fa8eece7de71d60e710c0fc174f1c9998af5e9b6902
+    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
     environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:35:24.842Z'
-    finished_at: '2026-10-30T23:35:28.917Z'
-    artifact_digest: 34fd9b2b3b69894063898b3bc245a338e3e07c21039248b571a10cd76d3d96ac
+    started_at: '2026-10-30T23:37:18.161Z'
+    finished_at: '2026-10-30T23:37:22.227Z'
+    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
     contract_hash: b90808221958492f1e9ae18b8f147aac97b1cf0de42ed919e1a07138e718d52a
     binding_hash: e2d89d1472075d6a254c121e492523ab3b5c6e2a2e5a48c776eacc3460677ff6
     fingerprint: 4d874c32746e19d66944824a805244a0e3afda243998a6f15b2d5d0dd30f4697
