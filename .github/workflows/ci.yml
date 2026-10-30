@@ -30,7 +30,9 @@ jobs:
           test-node: true
           test-python: true
           test-go: true
-          test-swift: true
+          # The Swift toolchain the action installs cannot build against the
+          # macOS runner's Xcode SDK; Swift bindings are tested on Linux and Windows.
+          test-swift: ${{runner.os != 'macOS'}}
 
   corpus:
     name: Parse SWI-Prolog's own library

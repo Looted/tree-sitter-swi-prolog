@@ -44,6 +44,10 @@
           "named": true
         },
         {
+          "type": "index_term",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -121,6 +125,10 @@
           },
           {
             "type": "float",
+            "named": true
+          },
+          {
+            "type": "index_term",
             "named": true
           },
           {
@@ -204,6 +212,10 @@
             "named": true
           },
           {
+            "type": "index_term",
+            "named": true
+          },
+          {
             "type": "integer",
             "named": true
           },
@@ -280,6 +292,10 @@
             "named": true
           },
           {
+            "type": "index_term",
+            "named": true
+          },
+          {
             "type": "integer",
             "named": true
           },
@@ -347,6 +363,10 @@
           },
           {
             "type": "float",
+            "named": true
+          },
+          {
+            "type": "index_term",
             "named": true
           },
           {
@@ -472,6 +492,10 @@
           "named": true
         },
         {
+          "type": "index_term",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -541,11 +565,19 @@
         "required": true,
         "types": [
           {
+            "type": "atom",
+            "named": true
+          },
+          {
             "type": "dict",
             "named": true
           },
           {
             "type": "dict_call",
+            "named": true
+          },
+          {
+            "type": "index_term",
             "named": true
           },
           {
@@ -637,6 +669,10 @@
             "named": true
           },
           {
+            "type": "index_term",
+            "named": true
+          },
+          {
             "type": "integer",
             "named": true
           },
@@ -713,6 +749,10 @@
             "named": true
           },
           {
+            "type": "index_term",
+            "named": true
+          },
+          {
             "type": "integer",
             "named": true
           },
@@ -752,6 +792,104 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "index_term",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "atom",
+            "named": true
+          },
+          {
+            "type": "back_quoted_string",
+            "named": true
+          },
+          {
+            "type": "binary_operation",
+            "named": true
+          },
+          {
+            "type": "char_code",
+            "named": true
+          },
+          {
+            "type": "compound_term",
+            "named": true
+          },
+          {
+            "type": "curly_term",
+            "named": true
+          },
+          {
+            "type": "dict",
+            "named": true
+          },
+          {
+            "type": "dict_call",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "index_term",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "list",
+            "named": true
+          },
+          {
+            "type": "parenthesized_term",
+            "named": true
+          },
+          {
+            "type": "prefix_operation",
+            "named": true
+          },
+          {
+            "type": "rational",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      },
+      "object": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "dict_call",
+            "named": true
+          },
+          {
+            "type": "index_term",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -796,6 +934,10 @@
           },
           {
             "type": "float",
+            "named": true
+          },
+          {
+            "type": "index_term",
             "named": true
           },
           {
@@ -867,6 +1009,10 @@
         },
         {
           "type": "float",
+          "named": true
+        },
+        {
+          "type": "index_term",
           "named": true
         },
         {
@@ -945,6 +1091,10 @@
           "named": true
         },
         {
+          "type": "index_term",
+          "named": true
+        },
+        {
           "type": "integer",
           "named": true
         },
@@ -1017,6 +1167,10 @@
           },
           {
             "type": "float",
+            "named": true
+          },
+          {
+            "type": "index_term",
             "named": true
           },
           {
@@ -1106,6 +1260,10 @@
             "named": true
           },
           {
+            "type": "index_term",
+            "named": true
+          },
+          {
             "type": "integer",
             "named": true
           },
@@ -1177,6 +1335,10 @@
   },
   {
     "type": "!",
+    "named": false
+  },
+  {
+    "type": "#",
     "named": false
   },
   {
@@ -1499,6 +1661,10 @@
   {
     "type": "float",
     "named": true
+  },
+  {
+    "type": "html_meta",
+    "named": false
   },
   {
     "type": "in",

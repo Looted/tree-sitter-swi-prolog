@@ -54,7 +54,7 @@ const PREFIX_HIGH = [
     'module_transparent', 'multifile', 'public', 'thread_local',
     'thread_initialization', 'volatile', 'table',
     // declarations from common libraries
-    'rdf_meta', 'persistent', 'record', 'chr_constraint', 'chr_type', 'chr_option',
+    'rdf_meta', 'persistent', 'record', 'html_meta', 'chr_constraint', 'chr_type', 'chr_option',
   ]],
 ];
 
@@ -64,6 +64,8 @@ const PREFIX_LOW = [
   [500, 'fx', ['?']],
   [200, 'fy', ['-', '+', '\\']],
   [100, 'fx', ['@']],
+  // library(wasm)
+  [50, 'fx', ['#']],
   [1, 'fx', ['$']],
 ];
 
@@ -156,10 +158,11 @@ export default grammar({
     binary_operation: $ => choice(
       ...INFIX_LOW.map(op => infix($, op, $._arg)),
       // Operators declared with op/3 are not known to the parser. A symbol
-      // atom between two operands is read as an infix operator at 700.
+      // atom or a plain name between two operands is read as an infix operator
+      // at 700: two adjacent operands are never valid Prolog otherwise.
       prec.left(precOf(700), seq(
         field('left', $._arg),
-        field('operator', alias($._graphic, $.operator)),
+        field('operator', alias(choice($._graphic, $._name), $.operator)),
         field('right', $._arg),
       )),
     ),
@@ -200,8 +203,17 @@ export default grammar({
       $.curly_term,
       $.dict,
       $.dict_call,
+      $.index_term,
       $.parenthesized_term,
     ),
+
+    // `Expr[Index]`, the postfix `[]` operator of library(wasm).
+    index_term: $ => prec.left(precOf(40), seq(
+      field('object', choice($.variable, $.dict_call, $.index_term)),
+      token.immediate('['),
+      field('index', $._arg),
+      ']',
+    )),
 
     parenthesized_term: $ => seq('(', $._term_1200, ')'),
 
@@ -244,7 +256,7 @@ export default grammar({
 
     // `Dict.key` and `Dict.put(...)`: the dot touches both sides.
     dict_call: $ => prec.left(precOf(100), seq(
-      field('dict', choice($.variable, $.dict, $.dict_call)),
+      field('dict', choice($.variable, $.atom, $.dict, $.dict_call, $.index_term)),
       token.immediate('.'),
       field('function', choice(
         alias($._immediate_name, $.atom),

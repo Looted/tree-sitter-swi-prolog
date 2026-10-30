@@ -663,6 +663,15 @@
                       "type": "ALIAS",
                       "content": {
                         "type": "STRING",
+                        "value": "html_meta"
+                      },
+                      "named": true,
+                      "value": "operator"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "STRING",
                         "value": "chr_constraint"
                       },
                       "named": true,
@@ -1808,8 +1817,17 @@
                 "content": {
                   "type": "ALIAS",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "_graphic"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_graphic"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "_name"
+                      }
+                    ]
                   },
                   "named": true,
                   "value": "operator"
@@ -2006,6 +2024,41 @@
                       "content": {
                         "type": "STRING",
                         "value": "@"
+                      },
+                      "named": true,
+                      "value": "operator"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "FIELD",
+                "name": "argument",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_arg"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 1150,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "operator",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "STRING",
+                        "value": "#"
                       },
                       "named": true,
                       "value": "operator"
@@ -2241,9 +2294,62 @@
         },
         {
           "type": "SYMBOL",
+          "name": "index_term"
+        },
+        {
+          "type": "SYMBOL",
           "name": "parenthesized_term"
         }
       ]
+    },
+    "index_term": {
+      "type": "PREC_LEFT",
+      "value": 1160,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "object",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "variable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dict_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "index_term"
+                }
+              ]
+            }
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "STRING",
+              "value": "["
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "index",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_arg"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
+          }
+        ]
+      }
     },
     "parenthesized_term": {
       "type": "SEQ",
@@ -2512,11 +2618,19 @@
                 },
                 {
                   "type": "SYMBOL",
+                  "name": "atom"
+                },
+                {
+                  "type": "SYMBOL",
                   "name": "dict"
                 },
                 {
                   "type": "SYMBOL",
                   "name": "dict_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "index_term"
                 }
               ]
             }
@@ -3070,6 +3184,10 @@
               },
               {
                 "type": "STRING",
+                "value": "html_meta"
+              },
+              {
+                "type": "STRING",
                 "value": "chr_constraint"
               },
               {
@@ -3091,6 +3209,10 @@
               {
                 "type": "STRING",
                 "value": "@"
+              },
+              {
+                "type": "STRING",
+                "value": "#"
               },
               {
                 "type": "STRING",
