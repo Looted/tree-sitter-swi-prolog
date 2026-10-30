@@ -1,5 +1,11 @@
 # tree-sitter-swi-prolog
 
+## 0.1.1
+
+### Patch Changes
+
+- 593713f: Point the npm package's `main` and `types` at `bindings/node/index.js` and `index.d.ts`, so `import` no longer prints Node's DEP0151 deprecation warning.
+
 ## 0.1.0 (2026-10-30)
 
 First release.

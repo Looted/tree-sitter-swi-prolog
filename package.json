@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-swi-prolog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SWI-Prolog grammar for tree-sitter",
   "type": "module",
   "repository": {

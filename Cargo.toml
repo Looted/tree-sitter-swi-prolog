@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-swi-prolog"
 description = "SWI-Prolog grammar for tree-sitter"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Piotr Franczyk"]
 license = "MIT"
 readme = "README.md"
