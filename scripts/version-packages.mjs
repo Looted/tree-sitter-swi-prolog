@@ -1,6 +1,7 @@
 // Apply pending changesets, then copy the new version from package.json to
-// package-lock.json and the other manifests (the files `tree-sitter version`
-// updates).
+// package-lock.json, the other manifests (the files `tree-sitter version`
+// updates) and the language metadata in the generated src/parser.c, which CI
+// checks against a fresh `tree-sitter generate`.
 //
 //   npm run version-packages
 import { execFileSync } from 'node:child_process';
@@ -25,6 +26,14 @@ for (const [file, pattern] of manifests) {
   if (!pattern.test(text)) throw new Error(`no version found in ${file}`);
   writeFileSync(file, text.replace(pattern, `$1${version}$3`));
 }
+
+const [major, minor, patch] = version.split('.');
+const parserPath = 'src/parser.c';
+const parser = readFileSync(parserPath, 'utf8');
+const metadata =
+  /(\.metadata = \{\s*\.major_version = )\d+(,\s*\.minor_version = )\d+(,\s*\.patch_version = )\d+/;
+if (!metadata.test(parser)) throw new Error(`no language metadata found in ${parserPath}`);
+writeFileSync(parserPath, parser.replace(metadata, `$1${major}$2${minor}$3${patch}`));
 
 const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
 lock.version = version;
