@@ -7,7 +7,7 @@
 It parses the Prolog that real SWI-Prolog projects are written in, not only ISO core:
 
 - the default SWI-Prolog operator table, including `:` module qualification, `=>` single-sided unification, `=@=`, `>:<`, `:<`, `as`, `$`, and declaration prefixes such as `dynamic`, `discontiguous`, `meta_predicate`, `multifile` and `table`
-- operators from common libraries: `library(clpfd)` (`#=`, `in`, `..`, ...), `library(chr)` (`<=>`, `==>`, `\`), `library(semweb/rdf_db)` (`^^`) and the `rdf_meta`, `persistent` and `record` declarations
+- operators from common libraries: `library(clpfd)` (`#=`, `in`, `..`, ...), `library(chr)` (`<=>`, `==>`, `\`), `library(semweb/rdf_db)` (`^^`), `library(wasm)` (`#Value`, `Expr[Index]`) and the `rdf_meta`, `persistent`, `record` and `html_meta` declarations
 - dicts (`_{name: "x"}`, `Tag{...}`) and functional notation on dicts (`D.key`, `D.put(k, V)`)
 - strings, back-quoted strings, `0'c` character codes, radix integers (`16'FF`), digit groups (`1 000 000`), rationals (`1r3`) and special floats (`1.0Inf`)
 - Unicode atoms and variables, multi-line quoted text, `%` and `/* */` comments, and a leading `#!` line
@@ -26,14 +26,14 @@ max(X, Y, X) :- X >= Y, !.
 
 ## Coverage
 
-CI parses SWI-Prolog's own `boot/` and `library/` sources and fails if fewer than 99.5% of top-level terms parse without errors. On the SWI-Prolog 10.0.2 library (413 files, about 240,000 lines) 99.66% of terms parse cleanly; the rest use operators their files declare themselves.
+CI parses SWI-Prolog's own `boot/` and `library/` sources and fails if fewer than 99.5% of top-level terms parse without errors. On SWI-Prolog's current `boot/` and `library/` 99.88% of terms parse cleanly, and on the full SWI-Prolog 10.0.2 library with packages (413 files, about 240,000 lines) 99.91%; the rest use prefix operators their files declare themselves.
 
 ## Limits
 
 A tree-sitter grammar has a fixed operator table, so operators declared at load time with `op/3` are not known while parsing:
 
-- an unknown **symbolic** operator between two operands (for example `X ===> Y`) is read as an infix operator at priority 700, so the clause still parses, with the grouping that priority gives
-- unknown **alphanumeric** operators (for example `X cis Y`) and unknown prefix operators produce an `ERROR` node for that term only; the parser recovers at the next clause
+- an unknown infix operator between two operands, symbolic or alphanumeric (for example `X ===> Y` or `X cis Y`), is read as an infix operator at priority 700, so the clause still parses, with the grouping that priority gives
+- unknown prefix and postfix operators produce an `ERROR` node for that term only; the parser recovers at the next clause
 - the parser does not lower operator priorities the way SWI-Prolog does in some argument positions, so `foo(:- a)` or `foo(a|b)` are errors
 
 A negative number literal is parsed as the prefix operator `-` applied to the number.
