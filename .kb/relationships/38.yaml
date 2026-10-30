@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-c10d3f020930
+    type: executable_for
+    from: SYM-proof-queries-tests
+    to: TEST-queries-highlights
+    created_at: "2026-10-30T23:32:39.840Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: executable_for
+    from: SYM-proof-queries-tests
+    to: TEST-queries-tags
+    created_at: 2026-10-30T23:32:48.197Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-397fb965917a
+  - type: executable_for
+    from: SYM-proof-queries-tests
+    to: TEST-queries-locals
+    created_at: 2026-10-30T23:32:56.126Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df9c9466f006

@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-e558d925740a
+    type: validates
+    from: TEST-operators-default-table
+    to: SCEN-operators-default-table
+    created_at: "2026-10-30T23:25:18.656Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-operators-default-table
+    to: REQ-AUTO-8BC043C7CC9A9876
+    created_at: 2026-10-30T23:25:18.656Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e1dd147eb6fd

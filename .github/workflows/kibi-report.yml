@@ -46,6 +46,10 @@ jobs:
       - run: npm exec -- kibi sync
       # Local pre-commit hooks are per clone, so CI runs the same validation.
       - run: npm exec -- kibi check
+      # Re-run the proof-bearing tests (test/proof/steps.json) so the report
+      # reflects this commit, not receipts recorded on an older one.
+      - run: npm exec -- kibi prove --all
+      - run: npm exec -- kibi check --fresh-evidence
       - run: npm exec -- kibi report --output kibi-report
       - name: Upload Kibi PR report
         if: ${{ github.event_name == 'pull_request' }}

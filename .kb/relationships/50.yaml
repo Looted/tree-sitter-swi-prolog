@@ -8,8 +8,15 @@ relationships:
     source: mcp://kibi/upsert
   - type: requires_property
     from: REQ-AUTO-8BC043C7CC9A9876
-    to: FACT-PROP-2261EC64BCC8E585
-    created_at: 2026-10-30T19:53:07.273Z
+    to: FACT-PROP-63F04692762B7E4A
+    created_at: 2026-10-30T23:23:45.284Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
-    id: rel-9337c897e732
+    id: rel-8c912c3dcfaf
+  - type: specified_by
+    from: REQ-AUTO-8BC043C7CC9A9876
+    to: SCEN-operators-default-table
+    created_at: 2026-10-30T23:25:17.802Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bab4c868d567

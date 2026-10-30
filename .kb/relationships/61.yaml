@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b1f37affa5cf
+    type: validates
+    from: TEST-queries-locals
+    to: SCEN-queries-locals
+    created_at: "2026-10-30T23:32:51.660Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-queries-locals
+    to: REQ-AUTO-8646498CAB4538B3
+    created_at: 2026-10-30T23:32:51.661Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b632bd7b5ec7

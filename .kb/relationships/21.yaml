@@ -1,0 +1,162 @@
+relationships:
+  - id: rel-753788f62193
+    type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-8BC043C7CC9A9876
+    created_at: "2026-10-30T23:25:19.713Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-operators-default-table
+    created_at: 2026-10-30T23:25:21.843Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a8d61245531c
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-CB9109F985E0A1B9
+    created_at: 2026-10-30T23:25:32.970Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0e38e26b3948
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-operators-library-tables
+    created_at: 2026-10-30T23:25:34.862Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0ecdd27c424b
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-A16F3692FC411659
+    created_at: 2026-10-30T23:31:46.173Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d61e59d4a01c
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-dicts
+    created_at: 2026-10-30T23:31:48.152Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c284d1eef43a
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-2A03F61D571A151C
+    created_at: 2026-10-30T23:31:55.114Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6cc0efddf272
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-literals
+    created_at: 2026-10-30T23:31:57.023Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e6bfba0bf5b9
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-C460B818EDA9A21D
+    created_at: 2026-10-30T23:32:03.163Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5033985cde88
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-lexical
+    created_at: 2026-10-30T23:32:04.986Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-8b5e37266a15
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-EF2C5E65EAED7FE7
+    created_at: 2026-10-30T23:32:11.453Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-b1a368b72b23
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-tree-shape
+    created_at: 2026-10-30T23:32:13.329Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-802390a624cf
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-3F73C36BFAA4E7AD
+    created_at: 2026-10-30T23:32:19.903Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d7a532bf34ff
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-unknown-infix
+    created_at: 2026-10-30T23:32:21.761Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d2acdedfac51
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-0307D6FD09C88974
+    created_at: 2026-10-30T23:32:28.116Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cf2dc665cccd
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-syntax-negative-number
+    created_at: 2026-10-30T23:32:29.933Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4a349761ddc0
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-queries-highlights
+    created_at: 2026-10-30T23:32:37.919Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-dc446f608a2d
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-queries-tags
+    created_at: 2026-10-30T23:32:46.389Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-19928a22d087
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-queries-locals
+    created_at: 2026-10-30T23:32:54.341Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a55b9ab7b06
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-54C43C681D60ACFD
+    created_at: 2026-10-30T23:33:00.328Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1d79db861091
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-corpus-real-prolog
+    created_at: 2026-10-30T23:33:02.108Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6faa04ad07a5
+  - type: implements
+    from: SYM-grammar-rules
+    to: REQ-AUTO-2EB5D8FC1F5670C3
+    created_at: 2026-10-30T23:33:10.314Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-add3fbec29f1
+  - type: covered_by
+    from: SYM-grammar-rules
+    to: TEST-corpus-wasm
+    created_at: 2026-10-30T23:33:12.338Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1a46ce3905ee

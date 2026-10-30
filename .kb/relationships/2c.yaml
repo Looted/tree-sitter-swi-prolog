@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-04e1c8aeffce
+    type: implements
+    from: SYM-grammar-infix-high
+    to: REQ-AUTO-8BC043C7CC9A9876
+    created_at: "2026-10-30T23:36:47.489Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-grammar-infix-high
+    to: REQ-AUTO-CB9109F985E0A1B9
+    created_at: 2026-10-30T23:36:47.489Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1102161d5433
+  - type: covered_by
+    from: SYM-grammar-infix-high
+    to: TEST-operators-default-table
+    created_at: 2026-10-30T23:36:47.494Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-856752e6e6ca
+  - type: covered_by
+    from: SYM-grammar-infix-high
+    to: TEST-operators-library-tables
+    created_at: 2026-10-30T23:36:47.496Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7c299cb74f36
