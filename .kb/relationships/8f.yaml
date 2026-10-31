@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-90405a99e6ae
+    type: implements
+    from: SYM-proof-parses-examples
+    to: REQ-AUTO-2A03F61D571A151C
+    created_at: "2026-10-31T18:40:08.998Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-proof-parses-examples
+    to: REQ-AUTO-A16F3692FC411659
+    created_at: 2026-10-31T18:40:08.999Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-63cd16d66402
+  - type: implements
+    from: SYM-proof-parses-examples
+    to: REQ-AUTO-C460B818EDA9A21D
+    created_at: 2026-10-31T18:40:09.005Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cea62644ede4
+  - type: covered_by
+    from: SYM-proof-parses-examples
+    to: TEST-syntax-literals
+    created_at: 2026-10-31T18:40:09.009Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fbcfb488f555
+  - type: covered_by
+    from: SYM-proof-parses-examples
+    to: TEST-syntax-dicts
+    created_at: 2026-10-31T18:40:09.012Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-9ea82b939ea0
+  - type: covered_by
+    from: SYM-proof-parses-examples
+    to: TEST-syntax-lexical
+    created_at: 2026-10-31T18:40:09.015Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f1560d88cc77

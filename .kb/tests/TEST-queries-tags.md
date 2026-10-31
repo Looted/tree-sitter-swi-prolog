@@ -10,6 +10,12 @@ proof_contract:
   required_proofs:
     - symbol_id: SYM-proof-queries-tests
       target: default
+  kind: exhaustive
+  domain_source:
+    symbol_id: SYM-queries-tag-kinds
+    export: TAG_KINDS
+  proves:
+    - CLAIM-D3E32A226B88EAF2
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:32:43.386Z'
@@ -17,20 +23,20 @@ id: TEST-queries-tags
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-594278c76c6f7513fb188d73
+    receipt_id: PR-4215959ba4e667faaa0233ec
     test_id: TEST-queries-tags
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
-    contract_hash: b90808221958492f1e9ae18b8f147aac97b1cf0de42ed919e1a07138e718d52a
-    binding_hash: 1b9ac04e5da439712826d62fe9ec5f6d6508bc581387fa54722e3f64ad9afefc
-    fingerprint: 4d874c32746e19d66944824a805244a0e3afda243998a6f15b2d5d0dd30f4697
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    contract_hash: 1f7a977ff82b85a8c485199e7ce25d8b28a9bd44cba723320c6a5abb8c7cdd67
+    binding_hash: a0e30c61e2b39a7b1ae8890210f2ffbc1aa1a85b4e8a020de7c3b4ff1854ed22
+    fingerprint: 99c9f118e7abe3955366c50b39203d81169ce45af18218ea23bc2734c61b43ec
     fingerprint_components:
-      contract: b90808221958492f1e9ae18b8f147aac97b1cf0de42ed919e1a07138e718d52a
+      contract: 1f7a977ff82b85a8c485199e7ce25d8b28a9bd44cba723320c6a5abb8c7cdd67
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -53,7 +59,37 @@ proof_receipts:
         binding: aggregate_run
         attempts:
           status: unavailable
-    kind: e2e
-    evidence_level: tested
+    kind: exhaustive
+    evidence_level: proved
+    certificate:
+      version: kibi.code-certificate.v1
+      kind: exhaustive
+      test_id: TEST-queries-tags
+      domain:
+        symbol_id: SYM-queries-tag-kinds
+        members:
+          - definition.function
+          - definition.module
+          - reference.call
+      results:
+        - member: definition.function
+          outcome: passed
+        - member: definition.module
+          outcome: passed
+        - member: reference.call
+          outcome: passed
+    certificate_digest: 084bd68dfddd9592abfaa60ea12b3cd224984bf2e700dbca131ef768fb88821f
+    claim_bindings:
+      - claim_key: CLAIM-D3E32A226B88EAF2
+        requirement_id: REQ-AUTO-B3E92EA9ED11C179
+        fact_id: FACT-PROP-DF763336B969A60E
+        binding: derived
+        scope: code
+        obligation:
+          kind: set_equals
+          members:
+            - definition.function
+            - definition.module
+            - reference.call
 ---
-End-to-end test `tags.scm tags definitions, modules and calls` in test/proof/queries.test.js, run through `kibi prove`.
+Exhaustive certificate over `TAG_KINDS`, the tag kinds read from tags.scm: each one tags the README cases (plain, module-qualified and guarded single-sided-unification heads, module declarations, calls).

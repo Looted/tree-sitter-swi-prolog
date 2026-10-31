@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-e63eee7ce4cf
+    type: implements
+    from: SYM-grammar-token-types
+    to: REQ-AUTO-0BCBA82BF5EB995A
+    created_at: "2026-10-31T18:40:03.280Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-grammar-token-types
+    to: TEST-queries-highlights
+    created_at: 2026-10-31T18:40:03.282Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a07621cad6fb

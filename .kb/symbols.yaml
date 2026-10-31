@@ -361,3 +361,111 @@ symbols:
         target: TEST-queries-locals
       - type: executable_for
         target: TEST-queries-tags
+  - id: SYM-grammar-named-node-types
+    title: NAMED_NODE_TYPES
+    status: active
+    sourceFile: grammar/node-types.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:39:57.797Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-dicts
+      - type: covered_by
+        target: TEST-syntax-lexical
+      - type: covered_by
+        target: TEST-syntax-literals
+      - type: covered_by
+        target: TEST-syntax-negative-number
+      - type: implements
+        target: REQ-AUTO-0307D6FD09C88974
+      - type: implements
+        target: REQ-AUTO-2A03F61D571A151C
+      - type: implements
+        target: REQ-AUTO-A16F3692FC411659
+      - type: implements
+        target: REQ-AUTO-C460B818EDA9A21D
+  - id: SYM-grammar-top-level-term-types
+    title: TOP_LEVEL_TERM_TYPES
+    status: active
+    sourceFile: grammar/node-types.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:40:00.492Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-locals
+      - type: covered_by
+        target: TEST-syntax-tree-shape
+      - type: implements
+        target: REQ-AUTO-8646498CAB4538B3
+      - type: implements
+        target: REQ-AUTO-EF2C5E65EAED7FE7
+  - id: SYM-grammar-token-types
+    title: TOKEN_TYPES
+    status: active
+    sourceFile: grammar/node-types.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:40:03.234Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-highlights
+      - type: implements
+        target: REQ-AUTO-0BCBA82BF5EB995A
+  - id: SYM-queries-tag-kinds
+    title: TAG_KINDS
+    status: active
+    sourceFile: queries/tags.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:40:06.014Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-tags
+      - type: implements
+        target: REQ-AUTO-B3E92EA9ED11C179
+  - id: SYM-proof-parses-examples
+    title: parsesExamples
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:40:08.944Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-dicts
+      - type: covered_by
+        target: TEST-syntax-lexical
+      - type: covered_by
+        target: TEST-syntax-literals
+      - type: implements
+        target: REQ-AUTO-2A03F61D571A151C
+      - type: implements
+        target: REQ-AUTO-A16F3692FC411659
+      - type: implements
+        target: REQ-AUTO-C460B818EDA9A21D
+  - id: SYM-proof-negates-as-prefix-minus
+    title: negatesAsPrefixMinus
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:40:11.731Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-negative-number
+      - type: implements
+        target: REQ-AUTO-0307D6FD09C88974
+  - id: SYM-proof-loads-in-web-tree-sitter
+    title: loadsInWebTreeSitter
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-31T18:42:25.075Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-wasm
+      - type: implements
+        target: REQ-AUTO-2EB5D8FC1F5670C3

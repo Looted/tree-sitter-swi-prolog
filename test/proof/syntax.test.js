@@ -4,7 +4,11 @@
 
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { parse } from './harness.js';
+import {
+  exhaustiveCertificate, failedCalls, failedMembers, ruleCertificate, writeCodeCertificate,
+} from 'kibi-cli/proof-certificates';
+import { NAMED_NODE_TYPES, NODE_TYPES, TOP_LEVEL_TERM_TYPES } from '../../grammar/node-types.js';
+import { negatesAsPrefixMinus, parse, parsesExamples } from './harness.js';
 
 function* descendants(node) {
   yield node;
@@ -12,6 +16,19 @@ function* descendants(node) {
 }
 
 const ofType = (node, type) => [...descendants(node)].filter(n => n.type === type);
+
+// A rule certificate: Kibi calls `decide` on every named node type of the
+// generated parser, at ingest as well, and checks the requirement's set
+// fact (the node types the README names) against what it decides.
+async function certifyNodeTypes(testId, predicate, symbolId, decide) {
+  const certificate = await ruleCertificate({
+    testId,
+    domains: { node_type: { symbolId: 'SYM-grammar-named-node-types', members: NAMED_NODE_TYPES } },
+    predicates: { [predicate]: { symbolId, argTypes: ['node_type'], decide } },
+  });
+  assert.deepEqual(failedCalls(certificate), []);
+  writeCodeCertificate(certificate);
+}
 
 function parseClean(source) {
   const tree = parse(source);
@@ -25,7 +42,7 @@ function valueOf(source) {
   return clause.childForFieldName('body').childForFieldName('right');
 }
 
-test('TEST-syntax-dicts: dicts and functional notation on dicts parse', () => {
+test('TEST-syntax-dicts: dicts and functional notation on dicts parse', async () => {
   const anonymous = valueOf('_{name: "x"}');
   assert.equal(anonymous.type, 'dict');
   assert.equal(anonymous.childForFieldName('tag').text, '_');
@@ -44,9 +61,12 @@ test('TEST-syntax-dicts: dicts and functional notation on dicts parse', () => {
   const put = valueOf('D.put(k, V)');
   assert.equal(put.type, 'dict_call');
   assert.equal(put.childForFieldName('function').type, 'compound_term');
+
+  for (const type of ['dict', 'dict_call']) assert.ok(parsesExamples(type), type);
+  await certifyNodeTypes('TEST-syntax-dicts', 'parses_examples', 'SYM-proof-parses-examples', parsesExamples);
 });
 
-test('TEST-syntax-literals: strings, codes and number forms parse', () => {
+test('TEST-syntax-literals: strings, codes and number forms parse', async () => {
   const literals = [
     ['"a string"', 'string'],
     ['`back quoted`', 'back_quoted_string'],
@@ -61,9 +81,10 @@ test('TEST-syntax-literals: strings, codes and number forms parse', () => {
     assert.equal(node.type, type, source);
     assert.equal(node.text, source);
   }
+  await certifyNodeTypes('TEST-syntax-literals', 'parses_examples', 'SYM-proof-parses-examples', parsesExamples);
 });
 
-test('TEST-syntax-lexical: Unicode names, multi-line quotes, comments and #! parse', () => {
+test('TEST-syntax-lexical: Unicode names, multi-line quotes, comments and #! parse', async () => {
   const root = parseClean([
     '#!/usr/bin/env swipl',
     '% a line comment',
@@ -82,9 +103,10 @@ test('TEST-syntax-lexical: Unicode names, multi-line quotes, comments and #! par
   assert.equal(quoted.text, "'multi\nline'");
   assert.equal(variable.type, 'variable');
   assert.equal(variable.text, 'Ünïcode');
+  await certifyNodeTypes('TEST-syntax-lexical', 'parses_examples', 'SYM-proof-parses-examples', parsesExamples);
 });
 
-test('TEST-syntax-tree-shape: top-level terms are clauses, directives or queries', () => {
+test('TEST-syntax-tree-shape: top-level terms are clauses, directives or queries', async () => {
   const root = parseClean([
     ':- module(m, [max/3]).',
     'fact(a).',
@@ -103,7 +125,47 @@ test('TEST-syntax-tree-shape: top-level terms are clauses, directives or queries
     assert.equal(clause.childForFieldName('neck').text, neck);
     assert.ok(clause.childForFieldName('body'));
   }
+
+  // Exhaustive certificate over the top-level term types of the generated
+  // parser: each one parses, and a clause has head, neck and body fields.
+  const certificate = await exhaustiveCertificate({
+    testId: 'TEST-syntax-tree-shape',
+    domain: { symbolId: 'SYM-grammar-top-level-term-types', members: TOP_LEVEL_TERM_TYPES },
+    check: checkTopLevelTerm,
+  });
+  assert.deepEqual(failedMembers(certificate), []);
+  writeCodeCertificate(certificate);
 });
+
+// Samples of each top-level term type; for a clause, the neck it has.
+const TOP_LEVEL_SAMPLES = {
+  clause: [
+    ['fact(a).', null],
+    ['max(X, Y, X) :- X >= Y, !.', ':-'],
+    ['greeting --> [hello].', '-->'],
+    ['p(X), X > 0 => q.', '=>'],
+  ],
+  directive: [[':- module(m, [max/3]).']],
+  query: [['?- max(1, 2, M).']],
+};
+
+function checkTopLevelTerm(type) {
+  const samples = TOP_LEVEL_SAMPLES[type];
+  assert.ok(samples, `no sample for top-level term type ${type}`);
+  for (const [sample, neck] of samples) {
+    const [term] = parseClean(sample).namedChildren;
+    assert.equal(term.type, type, sample);
+    if (type !== 'clause') continue;
+    assert.ok(term.childForFieldName('head'), sample);
+    assert.equal(term.childForFieldName('neck')?.text ?? null, neck, sample);
+    assert.equal(term.childForFieldName('body') !== null, neck !== null, sample);
+  }
+  if (type === 'clause') {
+    const { fields } = NODE_TYPES.find(t => t.type === 'clause');
+    assert.deepEqual(Object.keys(fields).sort(), ['body', 'head', 'neck']);
+    assert.equal(fields.head.required, true);
+  }
+}
 
 test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700', () => {
   for (const op of ['===>', 'cis']) {
@@ -119,11 +181,13 @@ test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700
   }
 });
 
-test('TEST-syntax-negative-number: a negative number is prefix minus on the number', () => {
+test('TEST-syntax-negative-number: a negative number is prefix minus on the number', async () => {
   const value = valueOf('-1');
   assert.equal(value.type, 'prefix_operation');
   assert.equal(value.childForFieldName('operator').text, '-');
   const argument = value.childForFieldName('argument');
   assert.equal(argument.type, 'integer');
   assert.equal(argument.text, '1');
+  await certifyNodeTypes('TEST-syntax-negative-number', 'negates_as_prefix_minus',
+    'SYM-proof-negates-as-prefix-minus', negatesAsPrefixMinus);
 });

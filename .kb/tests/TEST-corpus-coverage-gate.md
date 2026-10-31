@@ -26,17 +26,17 @@ id: TEST-corpus-coverage-gate
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-86bed0ea9d8739ccc176c091
+    receipt_id: PR-9305bc974a407b4bad69eede
     test_id: TEST-corpus-coverage-gate
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
     contract_hash: a7c6e45dc92a6407a16d80fa57cf982f0e68d41241c90e4eef77e7678eccfa5c
-    binding_hash: 9aba7bb097c3d07c5fa89482c332beeb3abfdb0f82c3aee78851c638129094c3
+    binding_hash: 736eb1eeb5bae24c229ead1172acab91c3e0221a46963a4365958ee8651deb04
     fingerprint: 4d061abb79a323284321e46829261c43ff0c4e2d67f5a26e1be7d6397cf6a77d
     fingerprint_components:
       contract: a7c6e45dc92a6407a16d80fa57cf982f0e68d41241c90e4eef77e7678eccfa5c

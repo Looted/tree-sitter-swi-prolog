@@ -10,6 +10,12 @@ proof_contract:
   required_proofs:
     - symbol_id: SYM-proof-queries-tests
       target: default
+  kind: exhaustive
+  domain_source:
+    symbol_id: SYM-grammar-top-level-term-types
+    export: TOP_LEVEL_TERM_TYPES
+  proves:
+    - CLAIM-C20A8BA7A7156E99
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:32:51.654Z'
@@ -17,20 +23,20 @@ id: TEST-queries-locals
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-548f4a5c07a8e620b5847f3c
+    receipt_id: PR-a5a39d11be64bfc8f5c0b967
     test_id: TEST-queries-locals
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
-    contract_hash: b90808221958492f1e9ae18b8f147aac97b1cf0de42ed919e1a07138e718d52a
-    binding_hash: 44e1cc556b77d351c0d04ccbd11f2dc6584d6b8640cea6a73a502685439563cd
-    fingerprint: 4d874c32746e19d66944824a805244a0e3afda243998a6f15b2d5d0dd30f4697
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    contract_hash: aae66c5049558a5be350d6f576bd4580c38e6253e519f137bfda94ded17d6aa9
+    binding_hash: 3ebd4ea60ff674693148da0b79ed4eb43781dffdf441547ade3ce59fcf4b84a9
+    fingerprint: 94330b0dc3635b971944b0771a8394edf730381002a4f5120c569c690e331a21
     fingerprint_components:
-      contract: b90808221958492f1e9ae18b8f147aac97b1cf0de42ed919e1a07138e718d52a
+      contract: aae66c5049558a5be350d6f576bd4580c38e6253e519f137bfda94ded17d6aa9
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -53,7 +59,37 @@ proof_receipts:
         binding: aggregate_run
         attempts:
           status: unavailable
-    kind: e2e
-    evidence_level: tested
+    kind: exhaustive
+    evidence_level: proved
+    certificate:
+      version: kibi.code-certificate.v1
+      kind: exhaustive
+      test_id: TEST-queries-locals
+      domain:
+        symbol_id: SYM-grammar-top-level-term-types
+        members:
+          - clause
+          - directive
+          - query
+      results:
+        - member: clause
+          outcome: passed
+        - member: directive
+          outcome: passed
+        - member: query
+          outcome: passed
+    certificate_digest: a684a56a65de0eb31fefcc5463cf448548441f401d3e0a69a7ad086d9f2db4ee
+    claim_bindings:
+      - claim_key: CLAIM-C20A8BA7A7156E99
+        requirement_id: REQ-AUTO-8646498CAB4538B3
+        fact_id: FACT-PROP-AF865207702FB697
+        binding: derived
+        scope: code
+        obligation:
+          kind: set_equals
+          members:
+            - clause
+            - directive
+            - query
 ---
-End-to-end test `locals.scm scopes variables to their clause, directive or query` in test/proof/queries.test.js, run through `kibi prove`.
+Exhaustive certificate over `TOP_LEVEL_TERM_TYPES`: locals.scm makes every top-level term type of the generated parser a scope, and every variable reference sits in exactly one scope.

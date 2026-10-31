@@ -2,16 +2,19 @@
 // Kibi calls each predicate on every member of its domain and records what
 // the parser decides, so each one parses a real sample and inspects the tree.
 
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import nodeGypBuild from 'node-gyp-build';
 import Parser from 'tree-sitter';
+import { Language as WasmLanguage, Parser as WasmParser } from 'web-tree-sitter';
 import {
   INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS,
 } from '../../grammar/operators.js';
 
 // Load the native parser directly: bindings/node/index.js looks for a
 // prebuilt binary under Bun, and Kibi may evaluate this module with Bun.
-export const language = nodeGypBuild(fileURLToPath(new URL('../..', import.meta.url)));
+const root = fileURLToPath(new URL('../..', import.meta.url));
+export const language = nodeGypBuild(root);
 
 const parser = new Parser();
 parser.setLanguage(language);
@@ -59,4 +62,77 @@ export function parsesAsOperator(op) {
     checks.push(hasNodeWith(`x :- (${op} a).`, 'prefix_operation', 'operator', op));
   }
   return checks.length > 0 && checks.every(Boolean);
+}
+
+// The README's examples of each syntax form, by the node type the parser
+// gives them. Each entry is [source, text]: `source` is a whole program and
+// `text` the exact text of the node it must contain.
+const value = text => [`x :- X = ${text}.`, text];
+const leading = text => [`${text}\nx.`, text];
+
+export const EXAMPLES = {
+  // Literals (README: strings, back-quoted strings, 0'c character codes,
+  // radix integers, digit groups, rationals and special floats).
+  string: [value('"a string"'), value('"multi\nline"')],
+  back_quoted_string: [value('`back quoted`')],
+  char_code: [value("0'c")],
+  integer: [value('42'), value("16'FF"), value('1 000 000')],
+  rational: [value('1r3')],
+  float: [value('1.5'), value('1.0Inf')],
+  // Dicts and functional notation on dicts.
+  dict: [value('_{name: "x"}'), value('Tag{a: 1, b: 2}')],
+  dict_call: [value('D.key'), value('D.put(k, V)')],
+  // Lexical syntax: Unicode names, multi-line quoted text, comments, #!.
+  atom: [value('größe'), value("'multi\nline'")],
+  variable: [value('X'), value('Ünïcode')],
+  comment: [leading('% a line comment'), leading('/* a block\n   comment */')],
+  shebang: [leading('#!/usr/bin/env swipl')],
+};
+
+/**
+ * Whether every README example of node type `type` parses without errors to
+ * a node of that type spanning exactly the example. False for a type with
+ * no examples.
+ */
+export function parsesExamples(type) {
+  const examples = EXAMPLES[type] ?? [];
+  return examples.length > 0 && examples.every(([source, text]) => {
+    const tree = parse(source);
+    if (tree.rootNode.hasError) return false;
+    return [...descendants(tree.rootNode)].some(n => n.type === type && n.text === text);
+  });
+}
+
+/**
+ * Whether every example of number type `type`, written with a leading `-`,
+ * parses as the prefix operator `-` applied to that number. False for a
+ * type that is not a number.
+ */
+export function negatesAsPrefixMinus(type) {
+  if (!['integer', 'float', 'rational'].includes(type)) return false;
+  return EXAMPLES[type].every(([, text]) => {
+    const tree = parse(`x :- X = -${text}.`);
+    if (tree.rootNode.hasError) return false;
+    const negated = tree.rootNode.namedChildren[0]
+      ?.childForFieldName('body')?.childForFieldName('right');
+    const argument = negated?.childForFieldName('argument');
+    return negated?.type === 'prefix_operation'
+      && negated.childForFieldName('operator')?.text === '-'
+      && argument?.type === type
+      && argument.text === text;
+  });
+}
+
+/**
+ * Whether the Wasm parser in `file` (relative to the repository root) loads
+ * in web-tree-sitter and parses a clause without errors.
+ */
+export async function loadsInWebTreeSitter(file) {
+  await WasmParser.init();
+  const wasmParser = new WasmParser();
+  wasmParser.setLanguage(await WasmLanguage.load(path.join(root, file)));
+  const tree = wasmParser.parse('max(X, Y, X) :- X >= Y, !.');
+  const clause = tree.rootNode.namedChildren[0];
+  return !tree.rootNode.hasError && clause?.type === 'clause'
+    && clause.childForFieldName('neck')?.text === ':-';
 }
