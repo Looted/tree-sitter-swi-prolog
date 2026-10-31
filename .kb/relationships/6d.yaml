@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-f439cedaac38
+    type: validates
+    from: TEST-corpus-wasm
+    to: SCEN-corpus-wasm
+    created_at: "2026-10-30T23:33:09.025Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-corpus-wasm
+    to: REQ-AUTO-2EB5D8FC1F5670C3
+    created_at: 2026-10-30T23:33:09.025Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-adc8ba0de2cd

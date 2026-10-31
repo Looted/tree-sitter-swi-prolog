@@ -8,8 +8,15 @@ relationships:
     source: mcp://kibi/upsert
   - type: requires_property
     from: REQ-AUTO-068378E78CCF8A38
-    to: FACT-PROP-772E8D72B247A4C7
-    created_at: 2026-10-30T19:53:05.110Z
+    to: FACT-PROP-296A2FA7182CF7DC
+    created_at: 2026-10-30T23:30:50.755Z
     created_by: kibi/upsert
     source: mcp://kibi/upsert
-    id: rel-31c2a554a69d
+    id: rel-f85ae8cff523
+  - type: specified_by
+    from: REQ-AUTO-068378E78CCF8A38
+    to: SCEN-corpus-coverage-gate
+    created_at: 2026-10-30T23:33:16.775Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-f06c76405a00

@@ -13,3 +13,10 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-f006b7276aac
+  - type: specified_by
+    from: REQ-AUTO-A16F3692FC411659
+    to: SCEN-syntax-dicts
+    created_at: 2026-10-30T23:31:44.324Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d282722f3f7b

@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-3003978640b3
+    type: implements
+    from: SYM-queries-highlights
+    to: REQ-AUTO-0BCBA82BF5EB995A
+    created_at: "2026-10-30T23:32:36.149Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-queries-highlights
+    to: TEST-queries-highlights
+    created_at: 2026-10-30T23:32:37.011Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-bac62a28d064

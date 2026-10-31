@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6de233dead3a
+    type: implements
+    from: SYM-queries-locals
+    to: REQ-AUTO-8646498CAB4538B3
+    created_at: "2026-10-30T23:32:52.571Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-queries-locals
+    to: TEST-queries-locals
+    created_at: 2026-10-30T23:32:53.419Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0448770fd820
+  - type: implements
+    from: SYM-ci-workflow
+    to: REQ-AUTO-068378E78CCF8A38
+    created_at: 2026-10-30T23:33:18.504Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6eadd2545c59
+  - type: covered_by
+    from: SYM-ci-workflow
+    to: TEST-corpus-coverage-gate
+    created_at: 2026-10-30T23:33:19.422Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-daf1e1b36e1e

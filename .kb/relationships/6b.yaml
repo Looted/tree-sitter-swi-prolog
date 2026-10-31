@@ -1,0 +1,43 @@
+relationships:
+  - id: rel-dccb07e8b163
+    type: covered_by
+    from: SYM-proof-parses-as-operator
+    to: TEST-operators-default-table
+    created_at: "2026-10-30T23:25:27.063Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-proof-parses-as-operator
+    to: TEST-operators-library-tables
+    created_at: 2026-10-30T23:25:40.236Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6ca9800f0d92
+  - type: validates
+    from: TEST-syntax-literals
+    to: SCEN-syntax-literals
+    created_at: 2026-10-30T23:31:54.240Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-14bdc1cd89bc
+  - type: validates
+    from: TEST-syntax-literals
+    to: REQ-AUTO-2A03F61D571A151C
+    created_at: 2026-10-30T23:31:54.254Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-12d736ebdf79
+  - type: implements
+    from: SYM-proof-parses-as-operator
+    to: REQ-AUTO-8BC043C7CC9A9876
+    created_at: 2026-10-30T23:34:07.484Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-09f620e7f87c
+  - type: implements
+    from: SYM-proof-parses-as-operator
+    to: REQ-AUTO-CB9109F985E0A1B9
+    created_at: 2026-10-30T23:34:10.210Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-76fd6544606d

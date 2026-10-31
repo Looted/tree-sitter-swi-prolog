@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-6fffcc3075b6
+    type: implements
+    from: SYM-grammar-necks
+    to: REQ-AUTO-8BC043C7CC9A9876
+    created_at: "2026-10-30T23:36:52.071Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-grammar-necks
+    to: REQ-AUTO-CB9109F985E0A1B9
+    created_at: 2026-10-30T23:36:52.071Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-07b30c682a96
+  - type: covered_by
+    from: SYM-grammar-necks
+    to: TEST-operators-default-table
+    created_at: 2026-10-30T23:36:52.076Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-663501b72bd5
+  - type: covered_by
+    from: SYM-grammar-necks
+    to: TEST-operators-library-tables
+    created_at: 2026-10-30T23:36:52.078Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-99da1678e1a7

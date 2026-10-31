@@ -1,0 +1,182 @@
+[
+  {
+    "test_id": "TEST-operators-default-table",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-operators-default-table:",
+        "test/proof/operators.proof.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-operators-library-tables",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-operators-library-tables:",
+        "test/proof/operators.proof.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-dicts",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-dicts:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-literals",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-literals:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-lexical",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-lexical:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-tree-shape",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-tree-shape:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-unknown-infix",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-unknown-infix:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-syntax-negative-number",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-negative-number:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-queries-highlights",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-queries-highlights:",
+        "test/proof/queries.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-queries-tags",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-queries-tags:",
+        "test/proof/queries.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-queries-locals",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-queries-locals:",
+        "test/proof/queries.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-corpus-real-prolog",
+    "steps": [
+      [
+        "npx",
+        "--no-install",
+        "tree-sitter",
+        "build",
+        "--wasm"
+      ],
+      [
+        "sh",
+        "-c",
+        "test -d examples/swipl-devel || git clone https://github.com/SWI-Prolog/swipl-devel examples/swipl-devel --depth=1 --filter=blob:none"
+      ],
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-corpus-real-prolog:",
+        "test/proof/corpus.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-corpus-coverage-gate",
+    "steps": [
+      [
+        "npx",
+        "--no-install",
+        "tree-sitter",
+        "build",
+        "--wasm"
+      ],
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-corpus-coverage-gate:",
+        "test/proof/corpus.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-corpus-wasm",
+    "steps": [
+      [
+        "npx",
+        "--no-install",
+        "tree-sitter",
+        "build",
+        "--wasm"
+      ],
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-corpus-wasm:",
+        "test/proof/corpus.test.js"
+      ]
+    ]
+  }
+]

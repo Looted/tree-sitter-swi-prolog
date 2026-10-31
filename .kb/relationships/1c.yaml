@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-468fed14255d
+    type: validates
+    from: TEST-syntax-tree-shape
+    to: SCEN-syntax-tree-shape
+    created_at: "2026-10-30T23:32:10.528Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-syntax-tree-shape
+    to: REQ-AUTO-EF2C5E65EAED7FE7
+    created_at: 2026-10-30T23:32:10.529Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-4c4c2a64136e

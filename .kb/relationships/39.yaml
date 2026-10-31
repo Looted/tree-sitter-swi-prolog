@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-0cb9fdfa4861
+    type: validates
+    from: TEST-syntax-unknown-infix
+    to: SCEN-syntax-unknown-infix
+    created_at: "2026-10-30T23:32:18.663Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-syntax-unknown-infix
+    to: REQ-AUTO-3F73C36BFAA4E7AD
+    created_at: 2026-10-30T23:32:18.664Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ab56f2f09c9c

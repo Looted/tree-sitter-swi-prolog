@@ -12,4 +12,352 @@
 #   A symbol without granularity_reason whose extraction misses gets no
 #   coordinate entry at all and is reported as failed; add symbol_role and
 #   granularity_reason to opt it into the coarse fallback.
-symbols: []
+symbols:
+  - id: SYM-grammar-rules
+    title: grammar
+    status: active
+    sourceFile: grammar.js
+    symbol_role: module
+    granularity_reason: module-level-behavior
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:24:48.862Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-real-prolog
+      - type: covered_by
+        target: TEST-corpus-wasm
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: covered_by
+        target: TEST-queries-highlights
+      - type: covered_by
+        target: TEST-queries-locals
+      - type: covered_by
+        target: TEST-queries-tags
+      - type: covered_by
+        target: TEST-syntax-dicts
+      - type: covered_by
+        target: TEST-syntax-lexical
+      - type: covered_by
+        target: TEST-syntax-literals
+      - type: covered_by
+        target: TEST-syntax-negative-number
+      - type: covered_by
+        target: TEST-syntax-tree-shape
+      - type: covered_by
+        target: TEST-syntax-unknown-infix
+      - type: implements
+        target: REQ-AUTO-0307D6FD09C88974
+      - type: implements
+        target: REQ-AUTO-2A03F61D571A151C
+      - type: implements
+        target: REQ-AUTO-2EB5D8FC1F5670C3
+      - type: implements
+        target: REQ-AUTO-3F73C36BFAA4E7AD
+      - type: implements
+        target: REQ-AUTO-54C43C681D60ACFD
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-A16F3692FC411659
+      - type: implements
+        target: REQ-AUTO-C460B818EDA9A21D
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+      - type: implements
+        target: REQ-AUTO-EF2C5E65EAED7FE7
+  - id: SYM-grammar-operator-names
+    title: OPERATOR_NAMES
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:24:51.639Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-proof-parses-as-operator
+    title: parsesAsOperator
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:24:53.229Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-proof-operators-test
+    title: operators.proof.test
+    status: active
+    sourceFile: test/proof/operators.proof.test.js
+    granularity_reason: test-suite
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:24:55.127Z
+    relationships:
+      - type: executable_for
+        target: TEST-operators-default-table
+      - type: executable_for
+        target: TEST-operators-library-tables
+  - id: SYM-proof-syntax-tests
+    title: syntax.test
+    status: active
+    sourceFile: test/proof/syntax.test.js
+    granularity_reason: test-suite
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:32.524Z
+    relationships:
+      - type: executable_for
+        target: TEST-syntax-dicts
+      - type: executable_for
+        target: TEST-syntax-lexical
+      - type: executable_for
+        target: TEST-syntax-literals
+      - type: executable_for
+        target: TEST-syntax-negative-number
+      - type: executable_for
+        target: TEST-syntax-tree-shape
+      - type: executable_for
+        target: TEST-syntax-unknown-infix
+  - id: SYM-proof-queries-tests
+    title: queries.test
+    status: active
+    sourceFile: test/proof/queries.test.js
+    granularity_reason: test-suite
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:34.414Z
+    relationships:
+      - type: executable_for
+        target: TEST-queries-highlights
+      - type: executable_for
+        target: TEST-queries-locals
+      - type: executable_for
+        target: TEST-queries-tags
+  - id: SYM-proof-corpus-tests
+    title: corpus.test
+    status: active
+    sourceFile: test/proof/corpus.test.js
+    granularity_reason: test-suite
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:36.215Z
+    relationships:
+      - type: executable_for
+        target: TEST-corpus-coverage-gate
+      - type: executable_for
+        target: TEST-corpus-real-prolog
+      - type: executable_for
+        target: TEST-corpus-wasm
+  - id: SYM-queries-highlights
+    title: highlights
+    status: active
+    sourceFile: queries/highlights.scm
+    symbol_role: config
+    granularity_reason: config-artifact
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:38.104Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-highlights
+      - type: implements
+        target: REQ-AUTO-0BCBA82BF5EB995A
+  - id: SYM-queries-tags
+    title: tags
+    status: active
+    sourceFile: queries/tags.scm
+    symbol_role: config
+    granularity_reason: config-artifact
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:38.989Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-tags
+      - type: implements
+        target: REQ-AUTO-B3E92EA9ED11C179
+  - id: SYM-queries-locals
+    title: locals
+    status: active
+    sourceFile: queries/locals.scm
+    symbol_role: config
+    granularity_reason: config-artifact
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:39.846Z
+    relationships:
+      - type: covered_by
+        target: TEST-queries-locals
+      - type: implements
+        target: REQ-AUTO-8646498CAB4538B3
+  - id: SYM-check-corpus
+    title: check-corpus
+    status: active
+    sourceFile: scripts/check-corpus.mjs
+    symbol_role: module
+    granularity_reason: module-level-behavior
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:40.708Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-coverage-gate
+      - type: covered_by
+        target: TEST-corpus-real-prolog
+      - type: implements
+        target: REQ-AUTO-068378E78CCF8A38
+  - id: SYM-ci-workflow
+    title: CI
+    status: active
+    sourceFile: .github/workflows/ci.yml
+    symbol_role: config
+    granularity_reason: config-artifact
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:31:42.547Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-coverage-gate
+      - type: implements
+        target: REQ-AUTO-068378E78CCF8A38
+  - id: SYM-grammar-infix-high
+    title: INFIX_HIGH
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:47.459Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-grammar-infix-low
+    title: INFIX_LOW
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:48.644Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-grammar-prefix-high
+    title: PREFIX_HIGH
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:49.789Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-grammar-prefix-low
+    title: PREFIX_LOW
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:50.881Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-grammar-necks
+    title: NECKS
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:52.036Z
+    relationships:
+      - type: covered_by
+        target: TEST-operators-default-table
+      - type: covered_by
+        target: TEST-operators-library-tables
+      - type: implements
+        target: REQ-AUTO-8BC043C7CC9A9876
+      - type: implements
+        target: REQ-AUTO-CB9109F985E0A1B9
+  - id: SYM-proof-parse
+    title: parse
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:54.345Z
+    relationships:
+      - type: executable_for
+        target: TEST-operators-default-table
+      - type: executable_for
+        target: TEST-operators-library-tables
+      - type: executable_for
+        target: TEST-queries-highlights
+      - type: executable_for
+        target: TEST-queries-locals
+      - type: executable_for
+        target: TEST-queries-tags
+      - type: executable_for
+        target: TEST-syntax-dicts
+      - type: executable_for
+        target: TEST-syntax-lexical
+      - type: executable_for
+        target: TEST-syntax-literals
+      - type: executable_for
+        target: TEST-syntax-negative-number
+      - type: executable_for
+        target: TEST-syntax-tree-shape
+      - type: executable_for
+        target: TEST-syntax-unknown-infix
+  - id: SYM-proof-language
+    title: language
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-10-30T23:36:56.779Z
+    relationships:
+      - type: executable_for
+        target: TEST-queries-highlights
+      - type: executable_for
+        target: TEST-queries-locals
+      - type: executable_for
+        target: TEST-queries-tags
