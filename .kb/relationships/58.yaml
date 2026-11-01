@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-aff87451f6d0
+    type: implements
+    from: SYM-grammar-top-level-term-types
+    to: REQ-AUTO-EF2C5E65EAED7FE7
+    created_at: "2026-10-31T18:40:00.553Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-grammar-top-level-term-types
+    to: REQ-AUTO-8646498CAB4538B3
+    created_at: 2026-10-31T18:40:00.554Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c4d6acea4045
+  - type: covered_by
+    from: SYM-grammar-top-level-term-types
+    to: TEST-syntax-tree-shape
+    created_at: 2026-10-31T18:40:00.560Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d456416f5ae1
+  - type: covered_by
+    from: SYM-grammar-top-level-term-types
+    to: TEST-queries-locals
+    created_at: 2026-10-31T18:40:00.564Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-524042ca6a47

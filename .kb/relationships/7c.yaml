@@ -6,13 +6,6 @@ relationships:
     created_at: "2026-10-30T19:53:05.898Z"
     created_by: kibi/upsert
     source: mcp://kibi/upsert
-  - type: requires_property
-    from: REQ-AUTO-0BCBA82BF5EB995A
-    to: FACT-PROP-D7464C0EEA1BAF89
-    created_at: 2026-10-30T19:53:05.898Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-ba5bd0924d66
   - type: specified_by
     from: REQ-AUTO-0BCBA82BF5EB995A
     to: SCEN-queries-highlights
@@ -20,3 +13,10 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-5f1da6c113f6
+  - type: requires_property
+    from: REQ-AUTO-0BCBA82BF5EB995A
+    to: FACT-PROP-3B87F50E8377E1C2
+    created_at: 2026-10-31T18:39:21.355Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-df3fbf1dbbdf

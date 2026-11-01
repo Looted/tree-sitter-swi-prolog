@@ -10,6 +10,20 @@ proof_contract:
   required_proofs:
     - symbol_id: SYM-proof-corpus-tests
       target: default
+  kind: rule
+  predicate_source:
+    loads_in_web_tree_sitter:
+      symbol_id: SYM-proof-loads-in-web-tree-sitter
+      export: loadsInWebTreeSitter
+      harness_for:
+        - SYM-grammar-rules
+  domains:
+    wasm_file:
+      source:
+        reader: glob
+        pattern: '*.wasm'
+  proves:
+    - CLAIM-2346716B42273929
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:33:09.018Z'
@@ -17,20 +31,20 @@ id: TEST-corpus-wasm
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-45e232adc7bcf9104cb0b8bf
+    receipt_id: PR-316356ce896692a6daaf1786
     test_id: TEST-corpus-wasm
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
-    contract_hash: 662295058add4c7d165413df194ca90d2ab73786888707ede78598dfc99706e6
-    binding_hash: 5d429c2670f48cd3efc9953d5caac4a8d4879119bd06836c6a70ee0fa177022d
-    fingerprint: 5c68291f608560e286f09a50c79cacf095401f32e3c14ac8008b93e2c2b3ba7b
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    contract_hash: 093203579ff0cf0c453254120ed21230364ef68e3aa63dd886424bb8f5d91abd
+    binding_hash: 1589309555e57db6c8008dda9163a3028d560feae98d73fb641b59d2750b3819
+    fingerprint: f19e2522e4c1df3fadd75367390af35305b673ce7a6001561e5c5adf60f6b801
     fingerprint_components:
-      contract: 662295058add4c7d165413df194ca90d2ab73786888707ede78598dfc99706e6
+      contract: 093203579ff0cf0c453254120ed21230364ef68e3aa63dd886424bb8f5d91abd
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -53,7 +67,36 @@ proof_receipts:
         binding: aggregate_run
         attempts:
           status: unavailable
-    kind: e2e
-    evidence_level: tested
+    kind: rule
+    evidence_level: proved
+    certificate:
+      version: kibi.code-certificate.v1
+      kind: rule
+      test_id: TEST-corpus-wasm
+      domains:
+        wasm_file:
+          members:
+            - tree-sitter-swi_prolog.wasm
+      predicates:
+        loads_in_web_tree_sitter:
+          symbol_id: SYM-proof-loads-in-web-tree-sitter
+          arg_types:
+            - wasm_file
+          rows:
+            - args:
+                - tree-sitter-swi_prolog.wasm
+              value: true
+    certificate_digest: 898588b93f89d893f7f73b36487d94193cf53bb710e25a9defd32e743571f9e9
+    claim_bindings:
+      - claim_key: CLAIM-2346716B42273929
+        requirement_id: REQ-AUTO-2EB5D8FC1F5670C3
+        fact_id: FACT-PROP-3CB88C0D09E2810A
+        binding: derived
+        scope: harness
+        obligation:
+          kind: every_member
+          members:
+            - tree-sitter-swi_prolog.wasm
+          predicate: loads_in_web_tree_sitter
 ---
-End-to-end test `The Wasm parser loads in web-tree-sitter` in test/proof/corpus.test.js, run through `kibi prove`.
+Rule certificate: steps.json builds the parser with `tree-sitter build --wasm`, then Kibi finds the `*.wasm` files in the repository root itself and calls `loadsInWebTreeSitter` on each: it loads the file in web-tree-sitter and parses a clause without errors.

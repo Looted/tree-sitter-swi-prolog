@@ -10,6 +10,19 @@ proof_contract:
   required_proofs:
     - symbol_id: SYM-proof-syntax-tests
       target: default
+  kind: rule
+  predicate_source:
+    parses_examples:
+      symbol_id: SYM-proof-parses-examples
+      export: parsesExamples
+      harness_for:
+        - SYM-grammar-rules
+  domains:
+    node_type:
+      symbol_id: SYM-grammar-named-node-types
+      export: NAMED_NODE_TYPES
+  proves:
+    - CLAIM-3A543BE7F509CFD2
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:32:02.320Z'
@@ -17,20 +30,20 @@ id: TEST-syntax-lexical
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-6f7c11750d7b66d52eb97cd0
+    receipt_id: PR-39142a4930260cfd643473e5
     test_id: TEST-syntax-lexical
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
-    contract_hash: 107df8049231adf2d44bf6091aaa259ba7e56c86d7e2d122ba5b12fb44940b10
-    binding_hash: 60f031b4ea66f52449920251110e7a8be49d48c8b14ee05c31df44a56adb16b7
-    fingerprint: fa49ce7d26d15c92de65d2e295a57e2ad200b38ec4c024956261f0b0d18b55e4
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    contract_hash: 9524877c6d242587ed94bc3e79081027748ed49a7af2b63306d8f15dbab62c41
+    binding_hash: 1328a8a486cac517562f2e713a185e59d88e512078c299aba1e19cf514b190ae
+    fingerprint: 2509adfb9de0395a4fa9d4b70afc3c3c7d4dd839703e6b06b8bb8c9b0cefdcad
     fingerprint_components:
-      contract: 107df8049231adf2d44bf6091aaa259ba7e56c86d7e2d122ba5b12fb44940b10
+      contract: 9524877c6d242587ed94bc3e79081027748ed49a7af2b63306d8f15dbab62c41
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -53,7 +66,145 @@ proof_receipts:
         binding: aggregate_run
         attempts:
           status: unavailable
-    kind: e2e
-    evidence_level: tested
+    kind: rule
+    evidence_level: proved
+    certificate:
+      version: kibi.code-certificate.v1
+      kind: rule
+      test_id: TEST-syntax-lexical
+      domains:
+        node_type:
+          symbol_id: SYM-grammar-named-node-types
+          members:
+            - arguments
+            - atom
+            - binary_operation
+            - clause
+            - compound_term
+            - curly_term
+            - dict
+            - dict_call
+            - dict_pair
+            - directive
+            - index_term
+            - list
+            - parenthesized_term
+            - prefix_operation
+            - query
+            - source_file
+            - back_quoted_string
+            - char_code
+            - comment
+            - end
+            - float
+            - integer
+            - operator
+            - rational
+            - shebang
+            - string
+            - variable
+      predicates:
+        parses_examples:
+          symbol_id: SYM-proof-parses-examples
+          arg_types:
+            - node_type
+          rows:
+            - args:
+                - arguments
+              value: false
+            - args:
+                - atom
+              value: true
+            - args:
+                - binary_operation
+              value: false
+            - args:
+                - clause
+              value: false
+            - args:
+                - compound_term
+              value: false
+            - args:
+                - curly_term
+              value: false
+            - args:
+                - dict
+              value: true
+            - args:
+                - dict_call
+              value: true
+            - args:
+                - dict_pair
+              value: false
+            - args:
+                - directive
+              value: false
+            - args:
+                - index_term
+              value: false
+            - args:
+                - list
+              value: false
+            - args:
+                - parenthesized_term
+              value: false
+            - args:
+                - prefix_operation
+              value: false
+            - args:
+                - query
+              value: false
+            - args:
+                - source_file
+              value: false
+            - args:
+                - back_quoted_string
+              value: true
+            - args:
+                - char_code
+              value: true
+            - args:
+                - comment
+              value: true
+            - args:
+                - end
+              value: false
+            - args:
+                - float
+              value: true
+            - args:
+                - integer
+              value: true
+            - args:
+                - operator
+              value: false
+            - args:
+                - rational
+              value: true
+            - args:
+                - shebang
+              value: true
+            - args:
+                - string
+              value: true
+            - args:
+                - variable
+              value: true
+    certificate_digest: f8e45eedab6a18df4a82d6ce746beb13b6bd71f2e73b99b7c7ecbb31aae1a65f
+    claim_bindings:
+      - claim_key: CLAIM-3A543BE7F509CFD2
+        requirement_id: REQ-AUTO-C460B818EDA9A21D
+        fact_id: FACT-PROP-754BCE2B3399FCCE
+        binding: derived
+        scope: harness
+        obligation:
+          kind: every_member
+          members:
+            - atom
+            - comment
+            - shebang
+            - string
+            - variable
+          predicate: parses_examples
 ---
-End-to-end test `Unicode names, multi-line quotes, comments and #! parse` in test/proof/syntax.test.js, run through `kibi prove`.
+Rule certificate: `parsesExamples` parses every README example of a node type (Unicode atoms and variables, multi-line quoted text, both comment forms, `#!`) and checks the node it gives. Kibi calls it on every named node type of the generated parser.

@@ -10,6 +10,12 @@ proof_contract:
   required_proofs:
     - symbol_id: SYM-proof-syntax-tests
       target: default
+  kind: exhaustive
+  domain_source:
+    symbol_id: SYM-grammar-top-level-term-types
+    export: TOP_LEVEL_TERM_TYPES
+  proves:
+    - CLAIM-AD1DB6E52F6BEADE
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:32:10.523Z'
@@ -17,20 +23,20 @@ id: TEST-syntax-tree-shape
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-d34a62b5476810c1dc7221fd
+    receipt_id: PR-64872a9f57ed47f88f9cc151
     test_id: TEST-syntax-tree-shape
     scope: end_to_end
     outcome: passed
-    code_snapshot: eaec8849b72521aed9373f166419bd88bcca4986ee6b1cc249715aa547ee74f9
-    environment_hash: 70794eb189f6bb0bd59b638fedca584356a0b61f01329f6f9f4e9f53a3b5be53
-    started_at: '2026-10-30T23:37:18.161Z'
-    finished_at: '2026-10-30T23:37:22.227Z'
-    artifact_digest: d42a7d80c5e829f4cc8b5b246592257ab7848f6f9fd9fcf5936e9c2d2c7b46e2
-    contract_hash: 107df8049231adf2d44bf6091aaa259ba7e56c86d7e2d122ba5b12fb44940b10
-    binding_hash: ff53b930e7557fb1ede5ba41c31755919104c58d9047273748c842dd08c16c20
-    fingerprint: fa49ce7d26d15c92de65d2e295a57e2ad200b38ec4c024956261f0b0d18b55e4
+    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
+    started_at: '2026-10-31T18:43:23.181Z'
+    finished_at: '2026-10-31T18:43:28.192Z'
+    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    contract_hash: 6deb1afbeae1e1daec6d0448d0bcf75693fd662e4dc6bc725cfeb02e50071fce
+    binding_hash: d9f600f85124156e02d81a7274d2e9d3d361da70d8bef1a013ffc29959d844c9
+    fingerprint: 5f02d06e70980b16a2c31f9b059ae5ee397d68f0b2870954ae60d378b244c0dc
     fingerprint_components:
-      contract: 107df8049231adf2d44bf6091aaa259ba7e56c86d7e2d122ba5b12fb44940b10
+      contract: 6deb1afbeae1e1daec6d0448d0bcf75693fd662e4dc6bc725cfeb02e50071fce
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -53,7 +59,37 @@ proof_receipts:
         binding: aggregate_run
         attempts:
           status: unavailable
-    kind: e2e
-    evidence_level: tested
+    kind: exhaustive
+    evidence_level: proved
+    certificate:
+      version: kibi.code-certificate.v1
+      kind: exhaustive
+      test_id: TEST-syntax-tree-shape
+      domain:
+        symbol_id: SYM-grammar-top-level-term-types
+        members:
+          - clause
+          - directive
+          - query
+      results:
+        - member: clause
+          outcome: passed
+        - member: directive
+          outcome: passed
+        - member: query
+          outcome: passed
+    certificate_digest: 0dc5cc29f6bdbf2551025912e453f098a658522d75f3b92ced1b6bd043551221
+    claim_bindings:
+      - claim_key: CLAIM-AD1DB6E52F6BEADE
+        requirement_id: REQ-AUTO-EF2C5E65EAED7FE7
+        fact_id: FACT-PROP-D6F7BF045B03E8C4
+        binding: derived
+        scope: code
+        obligation:
+          kind: set_equals
+          members:
+            - clause
+            - directive
+            - query
 ---
-End-to-end test `Top-level terms are clauses, directives or queries` in test/proof/syntax.test.js, run through `kibi prove`.
+Exhaustive certificate over `TOP_LEVEL_TERM_TYPES`, the top-level term types of the generated parser read from src/node-types.json: it must be exactly clause, directive and query, each parses at the top level, and a clause has head, neck and body fields.

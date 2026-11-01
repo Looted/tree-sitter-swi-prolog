@@ -11,8 +11,11 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { sourceCertificate, writeCodeCertificate } from 'kibi-cli/proof-certificates';
+import {
+  failedCalls, readProjectSource, ruleCertificate, sourceCertificate, writeCodeCertificate,
+} from 'kibi-cli/proof-certificates';
 import { Language, Parser } from 'web-tree-sitter';
+import { loadsInWebTreeSitter } from './harness.js';
 
 const root = fileURLToPath(new URL('../..', import.meta.url));
 const wasm = path.join(root, 'tree-sitter-swi_prolog.wasm');
@@ -56,4 +59,21 @@ test('TEST-corpus-wasm: the Wasm parser loads in web-tree-sitter', async () => {
   const clause = tree.rootNode.namedChildren[0];
   assert.equal(clause.type, 'clause');
   assert.equal(clause.childForFieldName('neck').text, ':-');
+
+  // Rule certificate: Kibi finds the built Wasm files itself and calls
+  // loadsInWebTreeSitter on each of them.
+  const { members } = await readProjectSource({ reader: 'glob', pattern: '*.wasm' }, root);
+  const certificate = await ruleCertificate({
+    testId: 'TEST-corpus-wasm',
+    domains: { wasm_file: { members } },
+    predicates: {
+      loads_in_web_tree_sitter: {
+        symbolId: 'SYM-proof-loads-in-web-tree-sitter',
+        argTypes: ['wasm_file'],
+        decide: loadsInWebTreeSitter,
+      },
+    },
+  });
+  assert.deepEqual(failedCalls(certificate), []);
+  writeCodeCertificate(certificate);
 });
