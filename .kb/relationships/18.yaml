@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-7c41bb985771
+    type: implements
+    from: SYM-scanner
+    to: REQ-AUTO-86BD3B0BF0F0C58F
+    created_at: "2026-11-02T15:32:07.456Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-scanner
+    to: REQ-AUTO-6E8A94EB729DF61C
+    created_at: 2026-11-02T15:32:07.457Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-17a91e0e53a3
+  - type: covered_by
+    from: SYM-scanner
+    to: TEST-lexical-clause-terminator
+    created_at: 2026-11-02T15:32:07.463Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1820684c58cd
+  - type: covered_by
+    from: SYM-scanner
+    to: TEST-lexical-dot-in-term
+    created_at: 2026-11-02T15:32:07.466Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-50cd35e9a285

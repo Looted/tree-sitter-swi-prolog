@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-0be74ab3a331
+    type: validates
+    from: TEST-lexical-clause-terminator
+    to: REQ-AUTO-86BD3B0BF0F0C58F
+    created_at: "2026-11-02T15:32:04.787Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-lexical-clause-terminator
+    to: SCEN-lexical-clause-terminator
+    created_at: 2026-11-02T15:32:04.789Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6f3b012698da

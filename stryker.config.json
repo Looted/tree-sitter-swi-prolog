@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "Mutation testing of the scripts and the query and node-type modules. npm run mutation",
+  "testRunner": "command",
+  "commandRunner": { "command": "node --test test/unit/*.test.js" },
+  "mutate": ["scripts/*.mjs", "queries/*.js", "grammar/node-types.js"],
+  "ignorePatterns": ["coverage", "reports", "examples", ".kb/branches", "target", "prebuilds"],
+  "coverageAnalysis": "off",
+  "concurrency": 4,
+  "timeoutMS": 120000,
+  "reporters": ["clear-text", "progress", "html", "json"],
+  "htmlReporter": { "fileName": "reports/mutation/scripts.html" },
+  "jsonReporter": { "fileName": "reports/mutation/scripts.json" },
+  "tempDirName": ".stryker-tmp"
+}

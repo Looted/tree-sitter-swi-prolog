@@ -1,7 +1,7 @@
 ---
 title: The parser must be buildable to WebAssembly and loadable with web-tree-sitter.
 status: open
-text_ref: readme:README.md#L55
+text_ref: readme:README.md#L56
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ The parser must be buildable to WebAssembly and loadable with web-tree-sitter.
 
 > and load `tree-sitter-swi_prolog.wasm` with [`web-tree-sitter`](https://www.npmjs.com/package/web-tree-sitter).
 
-Source: tree-sitter-swi-prolog README - README.md#L55
+Source: tree-sitter-swi-prolog README - README.md#L56

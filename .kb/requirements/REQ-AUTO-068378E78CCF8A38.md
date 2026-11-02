@@ -1,7 +1,7 @@
 ---
 title: CI must fail if fewer than 99.5% of top-level terms in SWI-Prolog's own boot/ and library/ sources parse without errors.
 status: open
-text_ref: readme:README.md#L29
+text_ref: readme:README.md#L30
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ CI must fail if fewer than 99.5% of top-level terms in SWI-Prolog's own boot/ an
 
 > CI parses SWI-Prolog's own `boot/` and `library/` sources and fails if fewer than 99.5% of top-level terms parse without errors. On SWI-Prolog's current `boot/` and `library/` 99.88% of terms parse cleanly, and on the full SWI-Prolog 10.0.2 library with packages (413 files, about 240,000 lines) 99.91%; the rest use prefix operators their files declare themselves.
 
-Source: tree-sitter-swi-prolog README - README.md#L29
+Source: tree-sitter-swi-prolog README - README.md#L30

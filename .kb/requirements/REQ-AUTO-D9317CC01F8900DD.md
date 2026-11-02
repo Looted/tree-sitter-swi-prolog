@@ -1,7 +1,7 @@
 ---
 title: A pull request with a user-visible change must add a changeset.
 status: open
-text_ref: readme:README.md#L73
+text_ref: readme:README.md#L77
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ A pull request with a user-visible change must add a changeset.
 
 > 1. A pull request with a user-visible change adds a changeset: run `npx changeset`, pick the bump and describe the change for users.
 
-Source: tree-sitter-swi-prolog README - README.md#L73
+Source: tree-sitter-swi-prolog README - README.md#L77

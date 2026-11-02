@@ -1,7 +1,7 @@
 ---
 title: queries/tags.scm must tag predicate definitions, including module-qualified heads and single-sided-unification heads with guards, module declarations, and calls.
 status: open
-text_ref: readme:README.md#L44
+text_ref: readme:README.md#L45
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ queries/tags.scm must tag predicate definitions, including module-qualified head
 
 > `queries/tags.scm`: predicate definitions (clause heads, including module-qualified heads and single-sided-unification heads with guards), module declarations, and calls. `@name` is the predicate name without arity; count the head's arguments for the arity, and add two for DCG rules (neck `-->`)
 
-Source: tree-sitter-swi-prolog README - README.md#L44
+Source: tree-sitter-swi-prolog README - README.md#L45

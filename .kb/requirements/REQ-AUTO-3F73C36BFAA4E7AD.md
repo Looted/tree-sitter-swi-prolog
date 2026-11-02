@@ -1,7 +1,7 @@
 ---
 title: An unknown infix operator between two operands must be read as an infix operator at priority 700, so the clause still parses.
 status: open
-text_ref: readme:README.md#L35
+text_ref: readme:README.md#L36
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ An unknown infix operator between two operands must be read as an infix operator
 
 > an unknown infix operator between two operands, symbolic or alphanumeric (for example `X ===> Y` or `X cis Y`), is read as an infix operator at priority 700, so the clause still parses, with the grouping that priority gives
 
-Source: tree-sitter-swi-prolog README - README.md#L35
+Source: tree-sitter-swi-prolog README - README.md#L36

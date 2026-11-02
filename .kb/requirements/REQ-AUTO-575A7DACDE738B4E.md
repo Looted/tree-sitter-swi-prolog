@@ -1,7 +1,7 @@
 ---
 title: An unknown prefix or postfix operator must produce an ERROR node for that term only, and the parser must recover at the next clause.
 status: open
-text_ref: readme:README.md#L36
+text_ref: readme:README.md#L37
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ An unknown prefix or postfix operator must produce an ERROR node for that term o
 
 > unknown prefix and postfix operators produce an `ERROR` node for that term only; the parser recovers at the next clause
 
-Source: tree-sitter-swi-prolog README - README.md#L36
+Source: tree-sitter-swi-prolog README - README.md#L37

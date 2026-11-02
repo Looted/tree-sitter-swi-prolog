@@ -1,7 +1,7 @@
 ---
 title: Tags and releases must not be created by hand.
 status: closed
-text_ref: readme:README.md#L77
+text_ref: readme:README.md#L81
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ Tags and releases must not be created by hand.
 
 > The release step publishes only what is missing for the current version, so if a registry fails, run the **Release** workflow again from the Actions tab. Don't create tags or releases by hand.
 
-Source: tree-sitter-swi-prolog README - README.md#L77
+Source: tree-sitter-swi-prolog README - README.md#L81

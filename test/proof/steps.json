@@ -211,5 +211,27 @@
         "test/proof/process.test.js"
       ]
     ]
+  },
+  {
+    "test_id": "TEST-lexical-clause-terminator",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-lexical-clause-terminator:",
+        "test/proof/lexical.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-lexical-dot-in-term",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-lexical-dot-in-term:",
+        "test/proof/lexical.test.js"
+      ]
+    ]
   }
 ]

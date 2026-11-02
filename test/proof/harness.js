@@ -195,3 +195,28 @@ export async function loadsInWebTreeSitter(file) {
   return !tree.rootNode.hasError && clause?.type === 'clause'
     && clause.childForFieldName('neck')?.text === ':-';
 }
+
+// The program endsClauseBefore parses: `clause.`, then the follower and a
+// second clause, `b.`.
+function terminatedBy(clause, follower) {
+  if (follower === 'end_of_input') return `${clause}.`;
+  if (follower === 'line_comment') return `${clause}.% comment\nb.\n`;
+  const match = /^U\+([0-9A-F]{4,6})$/.exec(follower);
+  if (!match) throw new Error(`unknown follower ${follower}`);
+  return `${clause}.${String.fromCodePoint(parseInt(match[1], 16))}b.\n`;
+}
+
+/**
+ * Whether a `.` followed by `follower` (a code point written `U+XXXX`,
+ * `line_comment` or `end_of_input`) ends the clause, both after a fact and
+ * after a rule body: the first clause ends with an `end` token that is
+ * exactly that `.`.
+ */
+export function endsClauseBefore(follower) {
+  return ['a', 'x :- y'].every((clause) => {
+    const first = parse(terminatedBy(clause, follower)).rootNode.namedChildren[0];
+    const end = first?.namedChildren.at(-1);
+    return first?.type === 'clause' && end?.type === 'end'
+      && end.startIndex === clause.length && end.endIndex === clause.length + 1;
+  });
+}

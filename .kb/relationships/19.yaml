@@ -1,0 +1,12 @@
+relationships:
+  [
+    {
+        type: assumes,
+        from: SCEN-lexical-dot-in-term,
+        to: FACT-PROP-A82A5583C14F16AC,
+        created_at: 2026-11-02T15:40:43.945Z,
+        created_by: kibi/upsert,
+        source: mcp://kibi/upsert,
+        id: rel-a068a8cc49ea
+      }
+  ]

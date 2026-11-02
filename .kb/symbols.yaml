@@ -28,6 +28,10 @@ symbols:
       - type: covered_by
         target: TEST-corpus-wasm
       - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: covered_by
+        target: TEST-lexical-dot-in-term
+      - type: covered_by
         target: TEST-operators-default-table
       - type: covered_by
         target: TEST-operators-library-tables
@@ -63,6 +67,10 @@ symbols:
         target: REQ-AUTO-54C43C681D60ACFD
       - type: implements
         target: REQ-AUTO-575A7DACDE738B4E
+      - type: implements
+        target: REQ-AUTO-6E8A94EB729DF61C
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
       - type: implements
         target: REQ-AUTO-8BC043C7CC9A9876
       - type: implements
@@ -556,3 +564,58 @@ symbols:
         target: TEST-syntax-unknown-prefix-postfix
       - type: implements
         target: REQ-AUTO-575A7DACDE738B4E
+  - id: SYM-scanner
+    title: scanner
+    status: active
+    sourceFile: src/scanner.c
+    symbol_role: module
+    granularity_reason: module-level-behavior
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T15:31:15.002Z
+    relationships:
+      - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: covered_by
+        target: TEST-lexical-dot-in-term
+      - type: implements
+        target: REQ-AUTO-6E8A94EB729DF61C
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
+  - id: SYM-grammar-clause-end-followers
+    title: CLAUSE_END_FOLLOWERS
+    status: active
+    sourceFile: grammar/lexical.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T15:31:16.752Z
+    relationships:
+      - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
+  - id: SYM-proof-ends-clause-before
+    title: endsClauseBefore
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T15:31:20.150Z
+    relationships:
+      - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
+  - id: SYM-proof-lexical-tests
+    title: lexical.test
+    status: active
+    sourceFile: test/proof/lexical.test.js
+    granularity_reason: test-suite
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T15:31:23.918Z
+    relationships:
+      - type: executable_for
+        target: TEST-lexical-clause-terminator
+      - type: executable_for
+        target: TEST-lexical-dot-in-term

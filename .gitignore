@@ -55,3 +55,6 @@ zig-out/
 .kb/usage.log
 .env.kibi
 kibi-report/
+/coverage/
+.stryker-tmp/
+/reports/

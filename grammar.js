@@ -10,6 +10,7 @@ import {
   INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS, OPERATOR_NAMES,
   UNKNOWN_INFIX_PRIORITY, UNKNOWN_INFIX_RULES,
 } from './grammar/operators.js';
+import { LAYOUT } from './grammar/lexical.js';
 
 const precOf = priority => 1200 - priority;
 
@@ -34,7 +35,8 @@ const ALNUM = /[\p{L}\p{N}_]/u.source;
 export default grammar({
   name: 'swi_prolog',
 
-  extras: $ => [/\s/, $.comment],
+  // Layout is any Unicode White_Space character (grammar/lexical.js).
+  extras: $ => [LAYOUT, $.comment],
 
   externals: $ => [$.end, $._error_sentinel, $._end_guard],
 

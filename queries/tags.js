@@ -10,10 +10,16 @@
 
 import { readFileSync } from 'node:fs';
 
-const source = readFileSync(new URL('./tags.scm', import.meta.url), 'utf8')
-  .replace(/;.*$/gm, '');
+/**
+ * Every `@definition.*` and `@reference.*` capture in a tags query, once
+ * each, leaving out `;` comments.
+ */
+export function tagKinds(source) {
+  const code = source.replace(/;.*$/gm, '');
+  return [...new Set(
+    [...code.matchAll(/@((?:definition|reference)\.[\w.]+)/g)].map(m => m[1]),
+  )];
+}
 
 /** Every `@definition.*` and `@reference.*` capture in tags.scm, once each. */
-export const TAG_KINDS = [...new Set(
-  [...source.matchAll(/@((?:definition|reference)\.[\w.]+)/g)].map(m => m[1]),
-)];
+export const TAG_KINDS = tagKinds(readFileSync(new URL('./tags.scm', import.meta.url), 'utf8'));
