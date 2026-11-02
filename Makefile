@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-swi-prolog
 HOMEPAGE_URL := https://github.com/Looted/tree-sitter-swi-prolog
-VERSION := 0.1.1
+VERSION := 0.1.2
 
 # repository
 SRC_DIR := src
