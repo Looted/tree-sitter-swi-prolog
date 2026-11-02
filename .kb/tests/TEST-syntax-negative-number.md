@@ -30,15 +30,15 @@ id: TEST-syntax-negative-number
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-de10545e1ca22eaf0c9de84e
+    receipt_id: PR-7f1ea490627d9e76be70a2b4
     test_id: TEST-syntax-negative-number
     scope: end_to_end
     outcome: passed
-    code_snapshot: 0202941c4f45423b9416dc21798f1ccf171b9c35629d7da4498a2019fecaedee
+    code_snapshot: e93479f30b53a97975b6824221f68c1559f9a669c3458dba377ae1a40f68dd82
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T12:19:39.355Z'
-    finished_at: '2026-11-02T12:19:45.638Z'
-    artifact_digest: 1b0fdc7e9111a88a8f7116cae95e74d5a9792e1bf756beb9536e6c6efb06744f
+    started_at: '2026-11-02T12:20:15.533Z'
+    finished_at: '2026-11-02T12:20:21.825Z'
+    artifact_digest: 3ae51971025fe99b780528285cb4cd974b9500cb6fd9a65927cd64ff8bb07629
     contract_hash: 0d7685e473ce2336b53dcd66bfeeb0b0daf474a4bac361121cd34f6795ae5253
     binding_hash: af737ca9ae11f491aa1023d3d9aea5080df051d6bf460ab8592516462018250d
     fingerprint: 9c06e9ddbda3d20d4d3cc40f73c62814abf0c8508869c3499947f459bc3be450
