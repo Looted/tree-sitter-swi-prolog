@@ -37,9 +37,16 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.1",
-    "kibi-cli": "^2.38.0",
-    "kibi-core": "^0.27.0",
-    "kibi-mcp": "^3.22.0",
+    "kibi-cli": "^2.40.0",
+    "kibi-core": "^0.29.0",
+    "kibi-lang-bash": "^1.0.0",
+    "kibi-lang-c": "^1.0.0",
+    "kibi-lang-cpp": "^1.0.0",
+    "kibi-lang-go": "^1.0.0",
+    "kibi-lang-python": "^1.0.0",
+    "kibi-lang-rust": "^1.0.0",
+    "kibi-mcp": "^3.24.0",
+    "kibi-plugin-treesitter": "^3.0.0",
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.25.0",
     "tree-sitter-cli": "^0.26.7",
@@ -61,5 +68,20 @@
     "test:corpus": "node scripts/check-corpus.mjs",
     "version-packages": "node scripts/version-packages.mjs",
     "changeset": "changeset"
+  },
+  "kibi": {
+    "plugins": [
+      {
+        "package": "kibi-plugin-treesitter",
+        "capabilities": {
+          "kibi.reference-extractor.v1": {
+            "mode": "augment"
+          },
+          "kibi.symbol-extractor.v2": {
+            "mode": "augment"
+          }
+        }
+      }
+    ]
   }
 }

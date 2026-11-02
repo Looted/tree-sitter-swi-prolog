@@ -17,15 +17,15 @@ id: TEST-corpus-real-prolog
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-1c899396fdcd83b328b14683
+    receipt_id: PR-da6e8b21e9c6e34c0f9034a4
     test_id: TEST-corpus-real-prolog
     scope: end_to_end
     outcome: passed
-    code_snapshot: b77b3218bffbf6cd1d3777450fc18a367a0a0a364bfcfc8a86bb4fe321df1c24
+    code_snapshot: b195ac80a85bbe18a6d3c36c38b7c7fb507dfc97fbf1abeb6442dd1874d951ad
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-10-31T18:43:23.181Z'
-    finished_at: '2026-10-31T18:43:28.192Z'
-    artifact_digest: 155f4e85e6bff8d6fea239b412bb48f0b4f83863b65d2ddaf77e530ff501191e
+    started_at: '2026-11-02T11:24:53.103Z'
+    finished_at: '2026-11-02T11:24:59.210Z'
+    artifact_digest: 1246b8a0eeb12625bf902dcd4d24f74fd2e40aa72872809b791e248c8db2518a
     contract_hash: 662295058add4c7d165413df194ca90d2ab73786888707ede78598dfc99706e6
     binding_hash: f1bddab4480cf359c0c776f250eaeedc66d9b303f920d2360f4a0aeb4a9d4975
     fingerprint: 5c68291f608560e286f09a50c79cacf095401f32e3c14ac8008b93e2c2b3ba7b
