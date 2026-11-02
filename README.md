@@ -70,7 +70,7 @@ node scripts/check-corpus.mjs path/to/prolog/sources
 
 Releases are made from [changesets](https://github.com/changesets/changesets).
 
-1. A pull request with a user-visible change adds a changeset: run `npx changeset`, pick the bump and describe the change for users.
+1. A pull request with a user-visible change adds a changeset: run `npx changeset`, pick the bump and describe the change for users. CI fails a pull request without a changeset; for a change users don't see, add an empty one with `npx changeset --empty`.
 2. When it is merged, the **Release** workflow opens (or updates) a **Version packages** pull request that applies all pending changesets: it bumps the version in every manifest and writes their text into `CHANGELOG.md`.
 3. Merging that pull request releases the new version: the `vX.Y.Z` tag and GitHub release (with the changelog section as notes and the Wasm parser attached), npm, crates.io and PyPI.
 
