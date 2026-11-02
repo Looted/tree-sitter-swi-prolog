@@ -178,5 +178,27 @@
         "test/proof/corpus.test.js"
       ]
     ]
+  },
+  {
+    "test_id": "TEST-process-changeset",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-process-changeset:",
+        "test/proof/process.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-process-release-workflow",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-process-release-workflow:",
+        "test/proof/process.test.js"
+      ]
+    ]
   }
 ]

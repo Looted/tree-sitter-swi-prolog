@@ -1,6 +1,6 @@
 ---
 title: Tags and releases must not be created by hand.
-status: open
+status: closed
 text_ref: readme:README.md#L77
 tags:
   - strict-modeling
