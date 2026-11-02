@@ -23,15 +23,15 @@ id: TEST-queries-tags
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-8bdc8e125c3d36194998cc70
+    receipt_id: PR-9be039106cc35ed211ddb695
     test_id: TEST-queries-tags
     scope: end_to_end
     outcome: passed
     code_snapshot: b195ac80a85bbe18a6d3c36c38b7c7fb507dfc97fbf1abeb6442dd1874d951ad
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T11:24:53.103Z'
-    finished_at: '2026-11-02T11:24:59.210Z'
-    artifact_digest: 1246b8a0eeb12625bf902dcd4d24f74fd2e40aa72872809b791e248c8db2518a
+    started_at: '2026-11-02T11:25:38.876Z'
+    finished_at: '2026-11-02T11:25:44.673Z'
+    artifact_digest: d8abba9dd9acc7ddf27039478ad8a1a45901df502cbbd61e66f88ce259c49943
     contract_hash: 1f7a977ff82b85a8c485199e7ce25d8b28a9bd44cba723320c6a5abb8c7cdd67
     binding_hash: a0e30c61e2b39a7b1ae8890210f2ffbc1aa1a85b4e8a020de7c3b4ff1854ed22
     fingerprint: 99c9f118e7abe3955366c50b39203d81169ce45af18218ea23bc2734c61b43ec

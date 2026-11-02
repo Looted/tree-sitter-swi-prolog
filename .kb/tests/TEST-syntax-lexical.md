@@ -30,15 +30,15 @@ id: TEST-syntax-lexical
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-23bda09e72d17211ab76e56c
+    receipt_id: PR-74f5e7e234b0e281fc84633b
     test_id: TEST-syntax-lexical
     scope: end_to_end
     outcome: passed
     code_snapshot: b195ac80a85bbe18a6d3c36c38b7c7fb507dfc97fbf1abeb6442dd1874d951ad
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T11:24:53.103Z'
-    finished_at: '2026-11-02T11:24:59.210Z'
-    artifact_digest: 1246b8a0eeb12625bf902dcd4d24f74fd2e40aa72872809b791e248c8db2518a
+    started_at: '2026-11-02T11:25:38.876Z'
+    finished_at: '2026-11-02T11:25:44.673Z'
+    artifact_digest: d8abba9dd9acc7ddf27039478ad8a1a45901df502cbbd61e66f88ce259c49943
     contract_hash: 9524877c6d242587ed94bc3e79081027748ed49a7af2b63306d8f15dbab62c41
     binding_hash: 1328a8a486cac517562f2e713a185e59d88e512078c299aba1e19cf514b190ae
     fingerprint: 2509adfb9de0395a4fa9d4b70afc3c3c7d4dd839703e6b06b8bb8c9b0cefdcad
