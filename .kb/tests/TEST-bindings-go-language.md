@@ -25,15 +25,15 @@ id: TEST-bindings-go-language
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-ca4e80b94a05a057db2cccdc
+    receipt_id: PR-2ddd0710bf772ffae68857b7
     test_id: TEST-bindings-go-language
     scope: end_to_end
     outcome: passed
-    code_snapshot: b195ac80a85bbe18a6d3c36c38b7c7fb507dfc97fbf1abeb6442dd1874d951ad
+    code_snapshot: f084303fe0fcf1ef2a411baffca5710a817b7ed27fa8cc616e250abdde21ffa7
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T11:25:38.876Z'
-    finished_at: '2026-11-02T11:25:44.673Z'
-    artifact_digest: d8abba9dd9acc7ddf27039478ad8a1a45901df502cbbd61e66f88ce259c49943
+    started_at: '2026-11-02T11:45:34.804Z'
+    finished_at: '2026-11-02T11:45:41.764Z'
+    artifact_digest: 49f7cb263092d7e7d0cf82b342134cf6b9bcbcf0a48f825b4194539dd5ccdcea
     contract_hash: ed40e2c85437130c074363a11da61a1a1e7050348c391440dc6d0951df0123bc
     binding_hash: 41a1e85aea42a6b8e236ec2db5ca2a634d3fa32c32cb9727d464d33fd4f606c7
     fingerprint: e610a5423b920f055d758101eb7e36111db8972fa4fc620ca17a989641506f82
