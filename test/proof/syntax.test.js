@@ -10,7 +10,8 @@ import {
 import { NAMED_NODE_TYPES, NODE_TYPES, TOP_LEVEL_TERM_TYPES } from '../../grammar/node-types.js';
 import { UNKNOWN_INFIX_KINDS } from '../../grammar/operators.js';
 import {
-  negatesAsPrefixMinus, parse, parsesExamples, readsAsUnknownInfix,
+  UNKNOWN_OPERATOR_POSITIONS, negatesAsPrefixMinus, parse, parsesExamples,
+  readsAsUnknownInfix, recoversFromUnknownOperator,
 } from './harness.js';
 
 function* descendants(node) {
@@ -194,6 +195,34 @@ test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700
         symbolId: 'SYM-proof-reads-as-unknown-infix',
         argTypes: ['operator_kind'],
         decide: readsAsUnknownInfix,
+      },
+    },
+  });
+  assert.deepEqual(failedCalls(certificate), []);
+  writeCodeCertificate(certificate);
+});
+
+test('TEST-syntax-unknown-prefix-postfix: an unknown prefix or postfix operator is an error in its own clause', async () => {
+  const root = parse('a :- b.\np :- fy q.\nr :- s.\n').rootNode;
+  assert.deepEqual(root.namedChildren.map(c => [c.text, c.hasError]), [
+    ['a :- b.', false],
+    ['p :- fy q.', true],
+    ['r :- s.', false],
+  ]);
+  // Rule certificate: Kibi calls recoversFromUnknownOperator on prefix and
+  // postfix samples and checks each error stays inside its own clause.
+  const certificate = await ruleCertificate({
+    testId: 'TEST-syntax-unknown-prefix-postfix',
+    domains: {
+      operator_position: {
+        symbolId: 'SYM-proof-unknown-operator-positions', members: UNKNOWN_OPERATOR_POSITIONS,
+      },
+    },
+    predicates: {
+      recovers_from_unknown_operator: {
+        symbolId: 'SYM-proof-recovers-from-unknown-operator',
+        argTypes: ['operator_position'],
+        decide: recoversFromUnknownOperator,
       },
     },
   });

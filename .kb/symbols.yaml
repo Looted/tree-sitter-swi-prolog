@@ -49,6 +49,8 @@ symbols:
         target: TEST-syntax-tree-shape
       - type: covered_by
         target: TEST-syntax-unknown-infix
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
       - type: implements
         target: REQ-AUTO-0307D6FD09C88974
       - type: implements
@@ -59,6 +61,8 @@ symbols:
         target: REQ-AUTO-3F73C36BFAA4E7AD
       - type: implements
         target: REQ-AUTO-54C43C681D60ACFD
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E
       - type: implements
         target: REQ-AUTO-8BC043C7CC9A9876
       - type: implements
@@ -135,6 +139,8 @@ symbols:
         target: TEST-syntax-tree-shape
       - type: executable_for
         target: TEST-syntax-unknown-infix
+      - type: executable_for
+        target: TEST-syntax-unknown-prefix-postfix
   - id: SYM-proof-queries-tests
     title: queries.test
     status: active
@@ -526,3 +532,27 @@ symbols:
         target: TEST-process-release-workflow
       - type: implements
         target: REQ-AUTO-65EF0234A0D677D8
+  - id: SYM-proof-unknown-operator-positions
+    title: UNKNOWN_OPERATOR_POSITIONS
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:19:25.996Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E
+  - id: SYM-proof-recovers-from-unknown-operator
+    title: recoversFromUnknownOperator
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:19:28.884Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E

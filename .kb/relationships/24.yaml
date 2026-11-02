@@ -41,3 +41,10 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-831e7628e615
+  - type: executable_for
+    from: SYM-proof-syntax-tests
+    to: TEST-syntax-unknown-prefix-postfix
+    created_at: 2026-11-02T12:19:33.059Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d619a24e3db2

@@ -77,6 +77,17 @@
     ]
   },
   {
+    "test_id": "TEST-syntax-unknown-prefix-postfix",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-unknown-prefix-postfix:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
     "test_id": "TEST-syntax-negative-number",
     "steps": [
       [

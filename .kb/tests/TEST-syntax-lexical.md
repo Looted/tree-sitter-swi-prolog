@@ -30,17 +30,17 @@ id: TEST-syntax-lexical
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-150e4899331afa36c74fc4a9
+    receipt_id: PR-522f95e41a420eb263e0b5a4
     test_id: TEST-syntax-lexical
     scope: end_to_end
     outcome: passed
-    code_snapshot: ed7a44eb133eaa920d5aa961ffae01808b5817e516c84f325fed905d008cbb83
+    code_snapshot: 0202941c4f45423b9416dc21798f1ccf171b9c35629d7da4498a2019fecaedee
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T12:15:45.361Z'
-    finished_at: '2026-11-02T12:15:51.423Z'
-    artifact_digest: 7009b368b790f00982372d1c8ad367fcc3a378f97cc29696340347a190185758
+    started_at: '2026-11-02T12:19:39.355Z'
+    finished_at: '2026-11-02T12:19:45.638Z'
+    artifact_digest: 1b0fdc7e9111a88a8f7116cae95e74d5a9792e1bf756beb9536e6c6efb06744f
     contract_hash: 9524877c6d242587ed94bc3e79081027748ed49a7af2b63306d8f15dbab62c41
-    binding_hash: 3290f3f38b8539f4f1b5ed4994e4dd03cc2390d735e24c1f6b2bb3d882490583
+    binding_hash: ed7826d7d0ae06b0ec9cb560a8ec6dcf9d4e97615cbcb6b94a04f5fb61006d14
     fingerprint: 2509adfb9de0395a4fa9d4b70afc3c3c7d4dd839703e6b06b8bb8c9b0cefdcad
     fingerprint_components:
       contract: 9524877c6d242587ed94bc3e79081027748ed49a7af2b63306d8f15dbab62c41

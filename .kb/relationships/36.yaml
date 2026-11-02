@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-731a5d1a1c2f
+    type: covered_by
+    from: SYM-proof-unknown-operator-positions
+    to: TEST-syntax-unknown-prefix-postfix
+    created_at: "2026-11-02T12:19:26.064Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-proof-unknown-operator-positions
+    to: REQ-AUTO-575A7DACDE738B4E
+    created_at: 2026-11-02T12:20:12.108Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e074ed527120

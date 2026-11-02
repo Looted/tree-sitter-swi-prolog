@@ -152,6 +152,36 @@ export function readsAsUnknownInfix(kind) {
   });
 }
 
+// Clauses that use an operator no table declares (`fy`, `xf`, `@@`) as a
+// prefix or a postfix operator. SWI-Prolog reads them only after an op/3
+// declaration the parser cannot see.
+export const UNKNOWN_OPERATOR_SAMPLES = {
+  prefix: ['p :- fy q.', 'p :- a, fy q, b.', 'p :- @@ x.', 'p :- f(fy q).'],
+  postfix: ['t(X) :- X xf.', 't(X) :- a, X xf, b.', 'x(A) :- A @@ .'],
+};
+
+/** The operator positions the parser cannot read without a declaration. */
+export const UNKNOWN_OPERATOR_POSITIONS = Object.keys(UNKNOWN_OPERATOR_SAMPLES);
+
+/**
+ * Whether every sample clause with an unknown operator in `position`
+ * (prefix or postfix), placed between two clean clauses, gives an ERROR
+ * inside its own clause only: the program still has three top-level
+ * clauses, the middle one spans exactly the sample and has the error, and
+ * the clauses before and after it parse cleanly.
+ */
+export function recoversFromUnknownOperator(position) {
+  const samples = UNKNOWN_OPERATOR_SAMPLES[position] ?? [];
+  return samples.length > 0 && samples.every((sample) => {
+    const tree = parse(`a :- b.\n${sample}\nr :- s.\n`);
+    const [before, clause, after, ...rest] = tree.rootNode.namedChildren;
+    return rest.length === 0
+      && before?.type === 'clause' && !before.hasError && before.text === 'a :- b.'
+      && clause?.type === 'clause' && clause.hasError && clause.text === sample
+      && after?.type === 'clause' && !after.hasError && after.text === 'r :- s.';
+  });
+}
+
 /**
  * Whether the Wasm parser in `file` (relative to the repository root) loads
  * in web-tree-sitter and parses a clause without errors.

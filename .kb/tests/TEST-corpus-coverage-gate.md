@@ -27,15 +27,15 @@ id: TEST-corpus-coverage-gate
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-de49133cc3e8ac956e36c3fc
+    receipt_id: PR-01ca35bdf5f95690346f8f66
     test_id: TEST-corpus-coverage-gate
     scope: end_to_end
     outcome: passed
-    code_snapshot: ed7a44eb133eaa920d5aa961ffae01808b5817e516c84f325fed905d008cbb83
+    code_snapshot: 0202941c4f45423b9416dc21798f1ccf171b9c35629d7da4498a2019fecaedee
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T12:15:45.361Z'
-    finished_at: '2026-11-02T12:15:51.423Z'
-    artifact_digest: 7009b368b790f00982372d1c8ad367fcc3a378f97cc29696340347a190185758
+    started_at: '2026-11-02T12:19:39.355Z'
+    finished_at: '2026-11-02T12:19:45.638Z'
+    artifact_digest: 1b0fdc7e9111a88a8f7116cae95e74d5a9792e1bf756beb9536e6c6efb06744f
     contract_hash: f5374fb45b31c81c1cca21ce5e03c63f436d6abe7d506ba6e939d3b9841db605
     binding_hash: 169943c80b7c98f2a9d6167d4466eade58013ff3ad1510290e7c52dcae103b0c
     fingerprint: 997fd5de4bedc53dfc8a54eca43e02008137ee064b85bb4bf35e045a864266cc

@@ -1,18 +1,4 @@
 relationships:
-  - id: rel-d00c2dd1ff7a
-    type: constrains
-    from: REQ-AUTO-575A7DACDE738B4E
-    to: FACT-SUBJECT-C8C48E1E82CDBEB2
-    created_at: "2026-10-30T19:53:05.443Z"
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-  - type: requires_property
-    from: REQ-AUTO-575A7DACDE738B4E
-    to: FACT-PROP-83389FE08A6D46B9
-    created_at: 2026-10-30T19:53:05.443Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-f38e5714e368
   - type: implements
     from: SYM-release-workflow
     to: REQ-AUTO-65EF0234A0D677D8
@@ -27,3 +13,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-40b0f7c1e0bb
+  - type: constrains
+    from: REQ-AUTO-575A7DACDE738B4E
+    to: FACT-SUBJECT-142181B8CCC63C13
+    created_at: 2026-11-02T12:19:04.038Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-7177ae871f6e
+  - type: requires_property
+    from: REQ-AUTO-575A7DACDE738B4E
+    to: FACT-PROP-EC8D4F45D9A9B658
+    created_at: 2026-11-02T12:19:04.045Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-2342c77d9b4c
+  - type: specified_by
+    from: REQ-AUTO-575A7DACDE738B4E
+    to: SCEN-syntax-unknown-prefix-postfix
+    created_at: 2026-11-02T12:19:22.973Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d33053d9af23

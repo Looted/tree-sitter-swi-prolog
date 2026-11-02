@@ -269,3 +269,41 @@ a. % trailing
     (atom)
     (end))
   (comment))
+
+================================================================================
+Unknown prefix and postfix operators are errors in their own clause
+================================================================================
+
+a :- b.
+p :- fy q.
+t(X) :- X xf.
+r :- s.
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (clause
+    (atom)
+    (operator)
+    (atom)
+    (end))
+  (clause
+    (atom)
+    (operator)
+    (atom)
+    (ERROR)
+    (end))
+  (clause
+    (compound_term
+      (atom)
+      (arguments
+        (variable)))
+    (operator)
+    (variable)
+    (ERROR)
+    (end))
+  (clause
+    (atom)
+    (operator)
+    (atom)
+    (end)))

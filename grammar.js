@@ -36,7 +36,7 @@ export default grammar({
 
   extras: $ => [/\s/, $.comment],
 
-  externals: $ => [$.end, $._error_sentinel],
+  externals: $ => [$.end, $._error_sentinel, $._end_guard],
 
   word: $ => $._name,
 
@@ -125,6 +125,11 @@ export default grammar({
     ),
 
     _primary: $ => choice(
+      // Never produced. It makes the scanner run wherever an operand is
+      // expected, so a clause terminator there is lexed as `end`, a syntax
+      // error, instead of as a `.` atom that swallows the next clauses. The
+      // atom after it keeps every field that holds an operand required.
+      seq($._end_guard, $.atom),
       $.atom,
       $.variable,
       $.integer,
