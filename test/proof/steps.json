@@ -178,5 +178,16 @@
         "test/proof/corpus.test.js"
       ]
     ]
+  },
+  {
+    "test_id": "TEST-bindings-go-language",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-bindings-go-language:",
+        "test/proof/bindings.test.js"
+      ]
+    ]
   }
 ]

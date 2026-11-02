@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-657f9b913115
+    type: validates
+    from: TEST-bindings-go-language
+    to: SCEN-bindings-go-language
+    created_at: "2026-11-02T11:24:38.601Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-bindings-go-language
+    to: REQ-AUTO-5E8305031338D030
+    created_at: 2026-11-02T11:24:38.602Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-17b29232ddcf

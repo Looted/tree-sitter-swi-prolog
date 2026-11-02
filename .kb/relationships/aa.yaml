@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-397cd8bdb7a1
+    type: constrains
+    from: REQ-AUTO-5E8305031338D030
+    to: FACT-SUBJECT-DC28029A3DA10928
+    created_at: "2026-11-02T11:23:57.711Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: requires_property
+    from: REQ-AUTO-5E8305031338D030
+    to: FACT-PROP-FBB95D466F572051
+    created_at: 2026-11-02T11:23:57.712Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-993a3188a7c7
+  - type: specified_by
+    from: REQ-AUTO-5E8305031338D030
+    to: SCEN-bindings-go-language
+    created_at: 2026-11-02T11:24:37.606Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-43c66932b9c6
