@@ -469,29 +469,6 @@ symbols:
         target: TEST-corpus-wasm
       - type: implements
         target: REQ-AUTO-2EB5D8FC1F5670C3
-  - id: SYM-proof-bindings-tests
-    title: bindings.test
-    status: active
-    sourceFile: test/proof/bindings.test.js
-    granularity_reason: test-suite
-    origin:
-      kind: agent
-      recorded_at: 2026-11-02T11:24:39.473Z
-    relationships:
-      - type: executable_for
-        target: TEST-bindings-go-language
-  - id: SYM-go-binding-language
-    title: Language
-    status: active
-    sourceFile: bindings/go/binding.go
-    origin:
-      kind: agent
-      recorded_at: 2026-11-02T11:24:41.063Z
-    relationships:
-      - type: covered_by
-        target: TEST-bindings-go-language
-      - type: implements
-        target: REQ-AUTO-5E8305031338D030
   - id: SYM-grammar-unknown-infix-kinds
     title: UNKNOWN_INFIX_KINDS
     status: active
