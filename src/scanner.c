@@ -22,8 +22,17 @@ void tree_sitter_swi_prolog_external_scanner_deserialize(void *payload, const ch
   (void)length;
 }
 
+// Layout is Unicode White_Space: LAYOUT_CODE_POINTS in grammar/lexical.js,
+// which grammar.js skips between tokens.
 static bool is_layout(int32_t c) {
-  return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\f' || c == '\v';
+  switch (c) {
+    case '\t': case '\n': case '\v': case '\f': case '\r': case ' ':
+    case 0x85: case 0xA0: case 0x1680: case 0x2028: case 0x2029:
+    case 0x202F: case 0x205F: case 0x3000:
+      return true;
+    default:
+      return c >= 0x2000 && c <= 0x200A;
+  }
 }
 
 // The clause terminator is a `.` followed by layout, a `%` comment or the end

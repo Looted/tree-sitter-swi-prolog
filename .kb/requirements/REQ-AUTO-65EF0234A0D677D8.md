@@ -1,7 +1,7 @@
 ---
 title: The vX.Y.Z tag and GitHub release must be created by the Release workflow.
 status: open
-text_ref: readme:README.md#L77
+text_ref: readme:README.md#L79
 tags:
   - strict-modeling
   - confidence:0.80

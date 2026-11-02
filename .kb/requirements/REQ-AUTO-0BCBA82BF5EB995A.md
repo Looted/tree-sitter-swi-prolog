@@ -1,7 +1,7 @@
 ---
 title: queries/highlights.scm must provide syntax highlighting.
 status: open
-text_ref: readme:README.md#L43
+text_ref: readme:README.md#L44
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ queries/highlights.scm must provide syntax highlighting.
 
 > `queries/highlights.scm`: syntax highlighting
 
-Source: tree-sitter-swi-prolog README - README.md#L43
+Source: tree-sitter-swi-prolog README - README.md#L44

@@ -51,7 +51,8 @@ for (const dir of dirs) {
     for (const node of tree.rootNode.namedChildren) {
       if (node.type === 'comment' || node.type === 'shebang') continue;
       count++;
-      if (node.type === 'ERROR' || node.hasError) broken++;
+      // An ERROR node has an error too.
+      if (node.hasError) broken++;
     }
     files++;
     terms += count;

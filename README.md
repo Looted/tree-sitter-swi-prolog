@@ -11,6 +11,7 @@ It parses the Prolog that real SWI-Prolog projects are written in, not only ISO 
 - dicts (`_{name: "x"}`, `Tag{...}`) and functional notation on dicts (`D.key`, `D.put(k, V)`)
 - strings, back-quoted strings, `0'c` character codes, radix integers (`16'FF`), digit groups (`1 000 000`), rationals (`1r3`) and special floats (`1.0Inf`)
 - Unicode atoms and variables, multi-line quoted text, `%` and `/* */` comments, and a leading `#!` line
+- the clause terminator: a `.` followed by layout (any Unicode white space character), a `%` comment or the end of the input ends the clause, and a `.` followed by any other character does not, as in `a.b` or `X =.. L`
 
 Clauses are structured for tools: every top-level term is a `clause` (with `head`, `neck` and `body` fields), a `directive` or a `query`.
 
@@ -61,10 +62,13 @@ npm install
 npx tree-sitter generate
 npx tree-sitter test
 npx tree-sitter build --wasm
+npm run test:unit
 node scripts/check-corpus.mjs path/to/prolog/sources
 ```
 
-`grammar.js` lists the operator tables at the top. To support another library's operators, add them to the matching table with their SWI-Prolog priority and type.
+The unit tests in `test/unit/` cover all of the project's own code: `grammar.js` and `grammar/` (every node type, field and child type in `src/node-types.json` is produced by a sample), the queries (every pattern matches), `src/scanner.c` (with a C unit test) and the scripts. `npm run coverage` runs them and fails below 100% (it needs `gem install bashcov` for the shell scripts). `npm run mutation` runs mutation testing: Stryker on the JavaScript, regenerating the parser for each grammar mutant, and `test/mutation/mutants.mjs` on `src/scanner.c` and the shell scripts.
+
+`grammar/operators.js` lists the operator tables. To support another library's operators, add them to the matching table with their SWI-Prolog priority and type.
 
 ## Releasing
 

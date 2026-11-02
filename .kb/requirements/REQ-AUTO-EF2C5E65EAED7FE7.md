@@ -1,7 +1,7 @@
 ---
 title: Every top-level term must be a clause with head, neck and body fields, a directive or a query.
 status: open
-text_ref: readme:README.md#L15
+text_ref: readme:README.md#L16
 tags:
   - strict-modeling
   - confidence:0.90
@@ -39,4 +39,4 @@ Every top-level term must be a clause with head, neck and body fields, a directi
 
 > Clauses are structured for tools: every top-level term is a `clause` (with `head`, `neck` and `body` fields), a `directive` or a `query`.
 
-Source: tree-sitter-swi-prolog README - README.md#L15
+Source: tree-sitter-swi-prolog README - README.md#L16

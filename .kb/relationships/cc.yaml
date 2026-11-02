@@ -20,3 +20,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-a3c06923b33b
+  - type: implements
+    from: SYM-grammar-clause-end-followers
+    to: REQ-AUTO-86BD3B0BF0F0C58F
+    created_at: 2026-11-02T15:32:11.280Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0049bd7346b3
+  - type: covered_by
+    from: SYM-grammar-clause-end-followers
+    to: TEST-lexical-clause-terminator
+    created_at: 2026-11-02T15:32:11.290Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1a2fb20236ce

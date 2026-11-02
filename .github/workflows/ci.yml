@@ -64,6 +64,27 @@ jobs:
           # macOS runner's Xcode SDK; Swift bindings are tested on Linux and Windows.
           test-swift: ${{runner.os != 'macOS'}}
 
+  coverage:
+    name: Unit tests and coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      # Builds the native binding the tests load.
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Wasm parser
+        run: npx tree-sitter build --wasm
+      - name: Install bashcov
+        run: sudo gem install bashcov --no-document
+      # Fails below 100% of the project's own code: see test/coverage.sh.
+      - name: Run the unit tests with coverage
+        run: npm run coverage
+
   corpus:
     name: Parse SWI-Prolog's own library
     runs-on: ubuntu-latest

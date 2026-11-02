@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-495892eb87eb
+    type: implements
+    from: SYM-proof-ends-clause-before
+    to: REQ-AUTO-86BD3B0BF0F0C58F
+    created_at: "2026-11-02T15:32:15.234Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-proof-ends-clause-before
+    to: TEST-lexical-clause-terminator
+    created_at: 2026-11-02T15:32:15.235Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-29382f512065

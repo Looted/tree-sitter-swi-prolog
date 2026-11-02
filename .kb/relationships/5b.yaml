@@ -1,0 +1,8 @@
+relationships:
+  - id: rel-230eb2580316
+    type: assumes
+    from: SCEN-lexical-dot-in-term-ends
+    to: FACT-ASSUME-DOT-ENDS-ONE-OTHER
+    created_at: "2026-11-02T15:40:11.402Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert

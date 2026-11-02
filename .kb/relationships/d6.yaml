@@ -1,0 +1,22 @@
+relationships:
+  - id: rel-fc2ae7fd880a
+    type: validates
+    from: TEST-lexical-dot-in-term
+    to: REQ-AUTO-6E8A94EB729DF61C
+    created_at: "2026-11-02T15:32:06.006Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-lexical-dot-in-term
+    to: SCEN-lexical-dot-in-term
+    created_at: 2026-11-02T15:32:06.007Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-de08546d9812
+  - type: validates
+    from: TEST-lexical-dot-in-term
+    to: SCEN-lexical-dot-in-term-ends
+    created_at: 2026-11-02T15:40:14.397Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-85da31cc5043

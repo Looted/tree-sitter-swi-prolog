@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "Mutation testing of the grammar: each mutant regenerates the parser. npm run mutation:grammar",
+  "testRunner": "command",
+  "commandRunner": { "command": "test/mutation/grammar-check.sh" },
+  "mutate": ["grammar.js", "grammar/operators.js", "grammar/lexical.js"],
+  "ignorePatterns": ["coverage", "reports", "examples", ".kb/branches", "target", "prebuilds", "build", ".tree-sitter-lib", "*.wasm"],
+  "coverageAnalysis": "off",
+  "concurrency": 4,
+  "timeoutMS": 120000,
+  "reporters": ["clear-text", "progress", "html", "json"],
+  "htmlReporter": { "fileName": "reports/mutation/grammar.html" },
+  "jsonReporter": { "fileName": "reports/mutation/grammar.json" },
+  "tempDirName": ".stryker-tmp"
+}

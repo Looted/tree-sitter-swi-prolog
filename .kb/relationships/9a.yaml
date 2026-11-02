@@ -20,3 +20,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-fe3aa5aec87e
+  - type: executable_for
+    from: SYM-proof-lexical-tests
+    to: TEST-lexical-clause-terminator
+    created_at: 2026-11-02T15:32:18.008Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c43b15f71bb8
+  - type: executable_for
+    from: SYM-proof-lexical-tests
+    to: TEST-lexical-dot-in-term
+    created_at: 2026-11-02T15:32:18.017Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e17d883fdd64
