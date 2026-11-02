@@ -8,7 +8,7 @@ import nodeGypBuild from 'node-gyp-build';
 import Parser from 'tree-sitter';
 import { Language as WasmLanguage, Parser as WasmParser } from 'web-tree-sitter';
 import {
-  INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS,
+  INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS, OPERATOR_NAMES,
 } from '../../grammar/operators.js';
 
 // Load the native parser directly: bindings/node/index.js looks for a
@@ -120,6 +120,35 @@ export function negatesAsPrefixMinus(type) {
       && negated.childForFieldName('operator')?.text === '-'
       && argument?.type === type
       && argument.text === text;
+  });
+}
+
+// Operators of each unknown-infix kind that no operator table declares.
+export const UNKNOWN_INFIX_SAMPLES = {
+  symbolic: ['===>', '<~>'],
+  alphanumeric: ['cis', 'likes'],
+};
+
+/**
+ * Whether the parser reads every sample operator of `kind` (symbolic or
+ * alphanumeric) between two operands as an infix operator at priority 700:
+ * the clause parses without errors and, in `a, b OP c + d`, the operator sits
+ * below `,` (1000) and above `+` (500), so it takes `b` and `c + d`. False for
+ * a kind with no samples or a sample the operator tables already declare.
+ */
+export function readsAsUnknownInfix(kind) {
+  const samples = UNKNOWN_INFIX_SAMPLES[kind] ?? [];
+  return samples.length > 0 && samples.every((op) => {
+    if (OPERATOR_NAMES.includes(op)) return false;
+    const tree = parse(`x :- a, b ${op} c + d.`);
+    if (tree.rootNode.hasError) return false;
+    const body = tree.rootNode.namedChildren[0]?.childForFieldName('body');
+    const unknown = body?.childForFieldName('right');
+    return body?.childForFieldName('operator')?.text === ','
+      && unknown?.type === 'binary_operation'
+      && unknown.childForFieldName('operator')?.text === op
+      && unknown.childForFieldName('left')?.text === 'b'
+      && unknown.childForFieldName('right')?.text === 'c + d';
   });
 }
 

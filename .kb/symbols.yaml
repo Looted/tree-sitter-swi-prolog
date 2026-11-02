@@ -492,3 +492,27 @@ symbols:
         target: TEST-bindings-go-language
       - type: implements
         target: REQ-AUTO-5E8305031338D030
+  - id: SYM-grammar-unknown-infix-kinds
+    title: UNKNOWN_INFIX_KINDS
+    status: active
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:11:12.093Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-infix
+      - type: implements
+        target: REQ-AUTO-3F73C36BFAA4E7AD
+  - id: SYM-proof-reads-as-unknown-infix
+    title: readsAsUnknownInfix
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:11:14.401Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-infix
+      - type: implements
+        target: REQ-AUTO-3F73C36BFAA4E7AD

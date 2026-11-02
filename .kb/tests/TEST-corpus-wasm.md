@@ -31,17 +31,17 @@ id: TEST-corpus-wasm
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-d72bb0b7d5f9f475385a62b4
+    receipt_id: PR-70554ff3a3f5c3aeb0d73cb6
     test_id: TEST-corpus-wasm
     scope: end_to_end
     outcome: passed
-    code_snapshot: f084303fe0fcf1ef2a411baffca5710a817b7ed27fa8cc616e250abdde21ffa7
+    code_snapshot: 517ffe0f4de155e769c6370fc24763776556a8a3b4c15539f1b4cdaa9560a584
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T11:45:34.804Z'
-    finished_at: '2026-11-02T11:45:41.764Z'
-    artifact_digest: 49f7cb263092d7e7d0cf82b342134cf6b9bcbcf0a48f825b4194539dd5ccdcea
+    started_at: '2026-11-02T12:11:17.185Z'
+    finished_at: '2026-11-02T12:11:23.501Z'
+    artifact_digest: 3b9631206df8c2774729c5a553a1c3782acfa682b43c5b6e355cbccfe21eda3a
     contract_hash: 093203579ff0cf0c453254120ed21230364ef68e3aa63dd886424bb8f5d91abd
-    binding_hash: 1589309555e57db6c8008dda9163a3028d560feae98d73fb641b59d2750b3819
+    binding_hash: d80000d145ddd54695ad8ab0ee4aa0afa779d7d780851d16f5677dbc438746e1
     fingerprint: f19e2522e4c1df3fadd75367390af35305b673ce7a6001561e5c5adf60f6b801
     fingerprint_components:
       contract: 093203579ff0cf0c453254120ed21230364ef68e3aa63dd886424bb8f5d91abd

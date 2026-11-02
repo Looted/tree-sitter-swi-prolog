@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-759f5e5e4da1
+    type: implements
+    from: SYM-proof-reads-as-unknown-infix
+    to: REQ-AUTO-3F73C36BFAA4E7AD
+    created_at: "2026-11-02T12:11:14.477Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-proof-reads-as-unknown-infix
+    to: TEST-syntax-unknown-infix
+    created_at: 2026-11-02T12:11:14.478Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a8dd632da817

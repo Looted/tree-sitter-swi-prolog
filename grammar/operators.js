@@ -76,3 +76,18 @@ export const OPERATOR_NAMES = [...new Set([
     .flatMap(([, , ops]) => ops),
 ])].filter(op => op !== ',' && op !== '|');
 
+
+// Operators declared with op/3 are not known to the parser. Between two
+// operands, a token of one of these kinds is read as an infix operator at
+// UNKNOWN_INFIX_PRIORITY instead: two adjacent operands are never valid
+// Prolog otherwise. Keys name the kind, values the grammar rule for it.
+export const UNKNOWN_INFIX_RULES = {
+  symbolic: '_graphic',
+  alphanumeric: '_name',
+};
+
+/** The kinds of unknown infix operator the parser reads. */
+export const UNKNOWN_INFIX_KINDS = Object.keys(UNKNOWN_INFIX_RULES);
+
+/** The priority an unknown infix operator is read at. */
+export const UNKNOWN_INFIX_PRIORITY = 700;

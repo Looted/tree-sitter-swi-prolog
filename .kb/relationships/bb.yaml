@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-086190228ed6
+    type: implements
+    from: SYM-grammar-unknown-infix-kinds
+    to: REQ-AUTO-3F73C36BFAA4E7AD
+    created_at: "2026-11-02T12:11:12.131Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: covered_by
+    from: SYM-grammar-unknown-infix-kinds
+    to: TEST-syntax-unknown-infix
+    created_at: 2026-11-02T12:11:12.132Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-23694e268d1c
