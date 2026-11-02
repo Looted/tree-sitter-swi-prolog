@@ -17,15 +17,15 @@ id: TEST-lexical-dot-in-term
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-f5c43d793b0a58549e99097c
+    receipt_id: PR-7f2f960fa45bf79ee35b2765
     test_id: TEST-lexical-dot-in-term
     scope: end_to_end
     outcome: passed
-    code_snapshot: 6c7770794d09206056458f53c25c91ca9f5687a363f5eef577c9abf9c1ae0ed2
+    code_snapshot: e2f8c3823193a7cc259363566c6b69e7814834a1d5c789781e910eef18dc1301
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T15:40:22.050Z'
-    finished_at: '2026-11-02T15:40:26.388Z'
-    artifact_digest: 88d00c17f5c08795dce33cb54a87f79e2a76a670deb1d1f8bc1f42198fef3020
+    started_at: '2026-11-02T15:41:23.604Z'
+    finished_at: '2026-11-02T15:41:36.200Z'
+    artifact_digest: 7140a6d341430f8a2d2f1d96eead3f21acb818bd49625d30579a2b39c4c13d7b
     contract_hash: 31e8997fdd62a36799a01f0dcd283a68a70f2012c5eea7187ba81c95fb24b1c3
     binding_hash: 76581d52448f39b06fdc26bc398351118182538da5d9b94dd8139fd6775ac979
     fingerprint: fe2af42807660d566b6d817d46df781f4b5833ee0114856ed790006bade1a5ea

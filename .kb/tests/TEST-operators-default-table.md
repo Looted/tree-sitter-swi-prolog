@@ -30,15 +30,15 @@ id: TEST-operators-default-table
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-dc9c975819b3eaf09041cccc
+    receipt_id: PR-031f4b1f32df765b89704083
     test_id: TEST-operators-default-table
     scope: end_to_end
     outcome: passed
-    code_snapshot: 9be8506cb37ad895b6c1f1f2ca6c991e879e9d0a6213956da317f4d09483c6c8
+    code_snapshot: e2f8c3823193a7cc259363566c6b69e7814834a1d5c789781e910eef18dc1301
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T15:38:18.214Z'
-    finished_at: '2026-11-02T15:38:32.857Z'
-    artifact_digest: 2bb0930ab0bb0ce37eba88d500e91646e20d4441ba56b8390c962e7dbab39338
+    started_at: '2026-11-02T15:41:23.604Z'
+    finished_at: '2026-11-02T15:41:36.200Z'
+    artifact_digest: 7140a6d341430f8a2d2f1d96eead3f21acb818bd49625d30579a2b39c4c13d7b
     contract_hash: e2deb89e0458fd7cdebef0c8aead439f94664dd166c08ae81fe48ecd3981df28
     binding_hash: 049a2b19f0f9304334c437ed3cfe8c00bfdaca8aab320c0c5e7c5e4d09d493d6
     fingerprint: a6ae946435779d6846d60aa7d32eddbe8eba66bb003f60d1deae1b72ac55a752

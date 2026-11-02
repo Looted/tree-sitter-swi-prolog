@@ -26,15 +26,15 @@ id: TEST-process-release-workflow
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-3d3ed57d408b8cda3524f7c8
+    receipt_id: PR-b7555c3fde5419bca5decf8b
     test_id: TEST-process-release-workflow
     scope: end_to_end
     outcome: passed
-    code_snapshot: 9be8506cb37ad895b6c1f1f2ca6c991e879e9d0a6213956da317f4d09483c6c8
+    code_snapshot: e2f8c3823193a7cc259363566c6b69e7814834a1d5c789781e910eef18dc1301
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T15:38:18.214Z'
-    finished_at: '2026-11-02T15:38:32.857Z'
-    artifact_digest: 2bb0930ab0bb0ce37eba88d500e91646e20d4441ba56b8390c962e7dbab39338
+    started_at: '2026-11-02T15:41:23.604Z'
+    finished_at: '2026-11-02T15:41:36.200Z'
+    artifact_digest: 7140a6d341430f8a2d2f1d96eead3f21acb818bd49625d30579a2b39c4c13d7b
     contract_hash: 507ab8340b7d984f8777ae47e59ee9fc54d7e267d9414a9f31dbe48b94a1c284
     binding_hash: c663e915d902ef1ef26af09b09e56ab92b6f5b301dd96f95e7a8a0650e452939
     fingerprint: 0ece3c91d82383f8b1cd6b74e1f733f9144053b04c31f8942ba759bb52d5375c
