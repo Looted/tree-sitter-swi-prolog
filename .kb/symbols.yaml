@@ -49,6 +49,8 @@ symbols:
         target: TEST-syntax-tree-shape
       - type: covered_by
         target: TEST-syntax-unknown-infix
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
       - type: implements
         target: REQ-AUTO-0307D6FD09C88974
       - type: implements
@@ -59,6 +61,8 @@ symbols:
         target: REQ-AUTO-3F73C36BFAA4E7AD
       - type: implements
         target: REQ-AUTO-54C43C681D60ACFD
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E
       - type: implements
         target: REQ-AUTO-8BC043C7CC9A9876
       - type: implements
@@ -135,6 +139,8 @@ symbols:
         target: TEST-syntax-tree-shape
       - type: executable_for
         target: TEST-syntax-unknown-infix
+      - type: executable_for
+        target: TEST-syntax-unknown-prefix-postfix
   - id: SYM-proof-queries-tests
     title: queries.test
     status: active
@@ -235,8 +241,14 @@ symbols:
     relationships:
       - type: covered_by
         target: TEST-corpus-coverage-gate
+      - type: covered_by
+        target: TEST-process-changeset
       - type: implements
         target: REQ-AUTO-068378E78CCF8A38
+      - type: implements
+        target: REQ-AUTO-54C43C681D60ACFD
+      - type: implements
+        target: REQ-AUTO-D9317CC01F8900DD
   - id: SYM-grammar-infix-high
     title: INFIX_HIGH
     status: active
@@ -469,26 +481,78 @@ symbols:
         target: TEST-corpus-wasm
       - type: implements
         target: REQ-AUTO-2EB5D8FC1F5670C3
-  - id: SYM-proof-bindings-tests
-    title: bindings.test
+  - id: SYM-grammar-unknown-infix-kinds
+    title: UNKNOWN_INFIX_KINDS
     status: active
-    sourceFile: test/proof/bindings.test.js
+    sourceFile: grammar/operators.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:11:12.093Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-infix
+      - type: implements
+        target: REQ-AUTO-3F73C36BFAA4E7AD
+  - id: SYM-proof-reads-as-unknown-infix
+    title: readsAsUnknownInfix
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:11:14.401Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-infix
+      - type: implements
+        target: REQ-AUTO-3F73C36BFAA4E7AD
+  - id: SYM-proof-process-tests
+    title: process.test
+    status: active
+    sourceFile: test/proof/process.test.js
     granularity_reason: test-suite
     origin:
       kind: agent
-      recorded_at: 2026-11-02T11:24:39.473Z
+      recorded_at: 2026-11-02T12:14:43.901Z
     relationships:
       - type: executable_for
-        target: TEST-bindings-go-language
-  - id: SYM-go-binding-language
-    title: Language
+        target: TEST-process-changeset
+      - type: executable_for
+        target: TEST-process-release-workflow
+  - id: SYM-release-workflow
+    title: Release
     status: active
-    sourceFile: bindings/go/binding.go
+    sourceFile: .github/workflows/release.yml
+    symbol_role: config
+    granularity_reason: config-artifact
     origin:
       kind: agent
-      recorded_at: 2026-11-02T11:24:41.063Z
+      recorded_at: 2026-11-02T12:14:46.359Z
     relationships:
       - type: covered_by
-        target: TEST-bindings-go-language
+        target: TEST-process-release-workflow
       - type: implements
-        target: REQ-AUTO-5E8305031338D030
+        target: REQ-AUTO-65EF0234A0D677D8
+  - id: SYM-proof-unknown-operator-positions
+    title: UNKNOWN_OPERATOR_POSITIONS
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:19:25.996Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E
+  - id: SYM-proof-recovers-from-unknown-operator
+    title: recoversFromUnknownOperator
+    status: active
+    sourceFile: test/proof/harness.js
+    origin:
+      kind: agent
+      recorded_at: 2026-11-02T12:19:28.884Z
+    relationships:
+      - type: covered_by
+        target: TEST-syntax-unknown-prefix-postfix
+      - type: implements
+        target: REQ-AUTO-575A7DACDE738B4E

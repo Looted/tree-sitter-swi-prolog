@@ -8,6 +8,7 @@
 
 import {
   INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS, OPERATOR_NAMES,
+  UNKNOWN_INFIX_PRIORITY, UNKNOWN_INFIX_RULES,
 } from './grammar/operators.js';
 
 const precOf = priority => 1200 - priority;
@@ -35,7 +36,7 @@ export default grammar({
 
   extras: $ => [/\s/, $.comment],
 
-  externals: $ => [$.end, $._error_sentinel],
+  externals: $ => [$.end, $._error_sentinel, $._end_guard],
 
   word: $ => $._name,
 
@@ -91,9 +92,12 @@ export default grammar({
       // Operators declared with op/3 are not known to the parser. A symbol
       // atom or a plain name between two operands is read as an infix operator
       // at 700: two adjacent operands are never valid Prolog otherwise.
-      prec.left(precOf(700), seq(
+      prec.left(precOf(UNKNOWN_INFIX_PRIORITY), seq(
         field('left', $._arg),
-        field('operator', alias(choice($._graphic, $._name), $.operator)),
+        field('operator', alias(
+          choice(...Object.values(UNKNOWN_INFIX_RULES).map(rule => $[rule])),
+          $.operator,
+        )),
         field('right', $._arg),
       )),
     ),
@@ -121,6 +125,11 @@ export default grammar({
     ),
 
     _primary: $ => choice(
+      // Never produced. It makes the scanner run wherever an operand is
+      // expected, so a clause terminator there is lexed as `end`, a syntax
+      // error, instead of as a `.` atom that swallows the next clauses. The
+      // atom after it keeps every field that holds an operand required.
+      seq($._end_guard, $.atom),
       $.atom,
       $.variable,
       $.integer,

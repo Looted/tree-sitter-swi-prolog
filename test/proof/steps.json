@@ -77,6 +77,17 @@
     ]
   },
   {
+    "test_id": "TEST-syntax-unknown-prefix-postfix",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-syntax-unknown-prefix-postfix:",
+        "test/proof/syntax.test.js"
+      ]
+    ]
+  },
+  {
     "test_id": "TEST-syntax-negative-number",
     "steps": [
       [
@@ -180,13 +191,24 @@
     ]
   },
   {
-    "test_id": "TEST-bindings-go-language",
+    "test_id": "TEST-process-changeset",
     "steps": [
       [
         "node",
         "--test",
-        "--test-name-pattern=^TEST-bindings-go-language:",
-        "test/proof/bindings.test.js"
+        "--test-name-pattern=^TEST-process-changeset:",
+        "test/proof/process.test.js"
+      ]
+    ]
+  },
+  {
+    "test_id": "TEST-process-release-workflow",
+    "steps": [
+      [
+        "node",
+        "--test",
+        "--test-name-pattern=^TEST-process-release-workflow:",
+        "test/proof/process.test.js"
       ]
     ]
   }

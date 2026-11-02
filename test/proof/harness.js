@@ -8,7 +8,7 @@ import nodeGypBuild from 'node-gyp-build';
 import Parser from 'tree-sitter';
 import { Language as WasmLanguage, Parser as WasmParser } from 'web-tree-sitter';
 import {
-  INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS,
+  INFIX_HIGH, INFIX_LOW, PREFIX_HIGH, PREFIX_LOW, NECKS, OPERATOR_NAMES,
 } from '../../grammar/operators.js';
 
 // Load the native parser directly: bindings/node/index.js looks for a
@@ -120,6 +120,65 @@ export function negatesAsPrefixMinus(type) {
       && negated.childForFieldName('operator')?.text === '-'
       && argument?.type === type
       && argument.text === text;
+  });
+}
+
+// Operators of each unknown-infix kind that no operator table declares.
+export const UNKNOWN_INFIX_SAMPLES = {
+  symbolic: ['===>', '<~>'],
+  alphanumeric: ['cis', 'likes'],
+};
+
+/**
+ * Whether the parser reads every sample operator of `kind` (symbolic or
+ * alphanumeric) between two operands as an infix operator at priority 700:
+ * the clause parses without errors and, in `a, b OP c + d`, the operator sits
+ * below `,` (1000) and above `+` (500), so it takes `b` and `c + d`. False for
+ * a kind with no samples or a sample the operator tables already declare.
+ */
+export function readsAsUnknownInfix(kind) {
+  const samples = UNKNOWN_INFIX_SAMPLES[kind] ?? [];
+  return samples.length > 0 && samples.every((op) => {
+    if (OPERATOR_NAMES.includes(op)) return false;
+    const tree = parse(`x :- a, b ${op} c + d.`);
+    if (tree.rootNode.hasError) return false;
+    const body = tree.rootNode.namedChildren[0]?.childForFieldName('body');
+    const unknown = body?.childForFieldName('right');
+    return body?.childForFieldName('operator')?.text === ','
+      && unknown?.type === 'binary_operation'
+      && unknown.childForFieldName('operator')?.text === op
+      && unknown.childForFieldName('left')?.text === 'b'
+      && unknown.childForFieldName('right')?.text === 'c + d';
+  });
+}
+
+// Clauses that use an operator no table declares (`fy`, `xf`, `@@`) as a
+// prefix or a postfix operator. SWI-Prolog reads them only after an op/3
+// declaration the parser cannot see.
+export const UNKNOWN_OPERATOR_SAMPLES = {
+  prefix: ['p :- fy q.', 'p :- a, fy q, b.', 'p :- @@ x.', 'p :- f(fy q).'],
+  postfix: ['t(X) :- X xf.', 't(X) :- a, X xf, b.', 'x(A) :- A @@ .'],
+};
+
+/** The operator positions the parser cannot read without a declaration. */
+export const UNKNOWN_OPERATOR_POSITIONS = Object.keys(UNKNOWN_OPERATOR_SAMPLES);
+
+/**
+ * Whether every sample clause with an unknown operator in `position`
+ * (prefix or postfix), placed between two clean clauses, gives an ERROR
+ * inside its own clause only: the program still has three top-level
+ * clauses, the middle one spans exactly the sample and has the error, and
+ * the clauses before and after it parse cleanly.
+ */
+export function recoversFromUnknownOperator(position) {
+  const samples = UNKNOWN_OPERATOR_SAMPLES[position] ?? [];
+  return samples.length > 0 && samples.every((sample) => {
+    const tree = parse(`a :- b.\n${sample}\nr :- s.\n`);
+    const [before, clause, after, ...rest] = tree.rootNode.namedChildren;
+    return rest.length === 0
+      && before?.type === 'clause' && !before.hasError && before.text === 'a :- b.'
+      && clause?.type === 'clause' && clause.hasError && clause.text === sample
+      && after?.type === 'clause' && !after.hasError && after.text === 'r :- s.';
   });
 }
 

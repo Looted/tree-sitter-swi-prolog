@@ -13,3 +13,17 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-94ccf259b921
+  - type: implements
+    from: SYM-proof-recovers-from-unknown-operator
+    to: REQ-AUTO-575A7DACDE738B4E
+    created_at: 2026-11-02T12:19:28.932Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-5df8ffb6e7d4
+  - type: covered_by
+    from: SYM-proof-recovers-from-unknown-operator
+    to: TEST-syntax-unknown-prefix-postfix
+    created_at: 2026-11-02T12:19:28.938Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-a908b32a10ee

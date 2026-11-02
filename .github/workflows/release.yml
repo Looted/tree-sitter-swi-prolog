@@ -130,7 +130,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.plan.outputs.version }}
-        run: |
+        run: |-
           scripts/release-notes.sh "$VERSION" > "$RUNNER_TEMP/notes.md"
           gh release create "v$VERSION" *.wasm tree-sitter-swi-prolog.tar.gz \
             --target "$GITHUB_SHA" --title "tree-sitter-swi-prolog $VERSION" \

@@ -19,6 +19,7 @@ proof_contract:
     field: run
   proves:
     - CLAIM-AA6721CEB10806BB
+    - CLAIM-CDF1760D312B3643
 origin:
   kind: agent
   recorded_at: '2026-10-30T23:33:17.598Z'
@@ -26,20 +27,20 @@ id: TEST-corpus-coverage-gate
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-6de5daa58e926a58d71401d3
+    receipt_id: PR-851d3f9c493bf0bea83bbf04
     test_id: TEST-corpus-coverage-gate
     scope: end_to_end
     outcome: passed
-    code_snapshot: f084303fe0fcf1ef2a411baffca5710a817b7ed27fa8cc616e250abdde21ffa7
+    code_snapshot: e93479f30b53a97975b6824221f68c1559f9a669c3458dba377ae1a40f68dd82
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T11:45:34.804Z'
-    finished_at: '2026-11-02T11:45:41.764Z'
-    artifact_digest: 49f7cb263092d7e7d0cf82b342134cf6b9bcbcf0a48f825b4194539dd5ccdcea
-    contract_hash: a7c6e45dc92a6407a16d80fa57cf982f0e68d41241c90e4eef77e7678eccfa5c
-    binding_hash: 736eb1eeb5bae24c229ead1172acab91c3e0221a46963a4365958ee8651deb04
-    fingerprint: 4d061abb79a323284321e46829261c43ff0c4e2d67f5a26e1be7d6397cf6a77d
+    started_at: '2026-11-02T12:20:15.533Z'
+    finished_at: '2026-11-02T12:20:21.825Z'
+    artifact_digest: 3ae51971025fe99b780528285cb4cd974b9500cb6fd9a65927cd64ff8bb07629
+    contract_hash: f5374fb45b31c81c1cca21ce5e03c63f436d6abe7d506ba6e939d3b9841db605
+    binding_hash: 169943c80b7c98f2a9d6167d4466eade58013ff3ad1510290e7c52dcae103b0c
+    fingerprint: 997fd5de4bedc53dfc8a54eca43e02008137ee064b85bb4bf35e045a864266cc
     fingerprint_components:
-      contract: a7c6e45dc92a6407a16d80fa57cf982f0e68d41241c90e4eef77e7678eccfa5c
+      contract: f5374fb45b31c81c1cca21ce5e03c63f436d6abe7d506ba6e939d3b9841db605
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
@@ -96,6 +97,16 @@ proof_receipts:
           kind: set_relation
           members:
             - git clone https://github.com/SWI-Prolog/swipl-devel examples/swipl-devel --depth=1 --filter=blob:none
+            - node scripts/check-corpus.mjs --min 0.995 examples/swipl-devel/boot examples/swipl-devel/library
+          operator: includes
+      - claim_key: CLAIM-CDF1760D312B3643
+        requirement_id: REQ-AUTO-54C43C681D60ACFD
+        fact_id: FACT-PROP-AAEAA668C6FE5485
+        binding: derived
+        scope: source
+        obligation:
+          kind: set_relation
+          members:
             - node scripts/check-corpus.mjs --min 0.995 examples/swipl-devel/boot examples/swipl-devel/library
           operator: includes
 ---

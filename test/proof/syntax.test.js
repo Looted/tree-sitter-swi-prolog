@@ -8,7 +8,11 @@ import {
   exhaustiveCertificate, failedCalls, failedMembers, ruleCertificate, writeCodeCertificate,
 } from 'kibi-cli/proof-certificates';
 import { NAMED_NODE_TYPES, NODE_TYPES, TOP_LEVEL_TERM_TYPES } from '../../grammar/node-types.js';
-import { negatesAsPrefixMinus, parse, parsesExamples } from './harness.js';
+import { UNKNOWN_INFIX_KINDS } from '../../grammar/operators.js';
+import {
+  UNKNOWN_OPERATOR_POSITIONS, negatesAsPrefixMinus, parse, parsesExamples,
+  readsAsUnknownInfix, recoversFromUnknownOperator,
+} from './harness.js';
 
 function* descendants(node) {
   yield node;
@@ -167,7 +171,7 @@ function checkTopLevelTerm(type) {
   }
 }
 
-test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700', () => {
+test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700', async () => {
   for (const op of ['===>', 'cis']) {
     const body = parseClean(`x :- a, b ${op} c + d.`).namedChildren[0].childForFieldName('body');
     // `,` (1000) is above 700 and `+` (500) below, so the unknown operator
@@ -179,6 +183,51 @@ test('TEST-syntax-unknown-infix: an unknown infix operator reads at priority 700
     assert.equal(unknown.childForFieldName('left').text, 'b');
     assert.equal(unknown.childForFieldName('right').text, 'c + d');
   }
+  // Rule certificate: Kibi calls readsAsUnknownInfix on every kind of unknown
+  // operator the grammar reads (UNKNOWN_INFIX_KINDS in grammar/operators.js).
+  const certificate = await ruleCertificate({
+    testId: 'TEST-syntax-unknown-infix',
+    domains: {
+      operator_kind: { symbolId: 'SYM-grammar-unknown-infix-kinds', members: UNKNOWN_INFIX_KINDS },
+    },
+    predicates: {
+      reads_as_unknown_infix: {
+        symbolId: 'SYM-proof-reads-as-unknown-infix',
+        argTypes: ['operator_kind'],
+        decide: readsAsUnknownInfix,
+      },
+    },
+  });
+  assert.deepEqual(failedCalls(certificate), []);
+  writeCodeCertificate(certificate);
+});
+
+test('TEST-syntax-unknown-prefix-postfix: an unknown prefix or postfix operator is an error in its own clause', async () => {
+  const root = parse('a :- b.\np :- fy q.\nr :- s.\n').rootNode;
+  assert.deepEqual(root.namedChildren.map(c => [c.text, c.hasError]), [
+    ['a :- b.', false],
+    ['p :- fy q.', true],
+    ['r :- s.', false],
+  ]);
+  // Rule certificate: Kibi calls recoversFromUnknownOperator on prefix and
+  // postfix samples and checks each error stays inside its own clause.
+  const certificate = await ruleCertificate({
+    testId: 'TEST-syntax-unknown-prefix-postfix',
+    domains: {
+      operator_position: {
+        symbolId: 'SYM-proof-unknown-operator-positions', members: UNKNOWN_OPERATOR_POSITIONS,
+      },
+    },
+    predicates: {
+      recovers_from_unknown_operator: {
+        symbolId: 'SYM-proof-recovers-from-unknown-operator',
+        argTypes: ['operator_position'],
+        decide: recoversFromUnknownOperator,
+      },
+    },
+  });
+  assert.deepEqual(failedCalls(certificate), []);
+  writeCodeCertificate(certificate);
 });
 
 test('TEST-syntax-negative-number: a negative number is prefix minus on the number', async () => {

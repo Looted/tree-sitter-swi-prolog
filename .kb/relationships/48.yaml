@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-1e7ab85cecf3
+    type: validates
+    from: TEST-process-release-workflow
+    to: SCEN-process-release-workflow
+    created_at: "2026-11-02T12:14:43.017Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-process-release-workflow
+    to: REQ-AUTO-65EF0234A0D677D8
+    created_at: 2026-11-02T12:14:43.018Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-0d3c5586ec3d

@@ -1,18 +1,4 @@
 relationships:
-  - id: rel-9b96fbe0042c
-    type: constrains
-    from: REQ-AUTO-54C43C681D60ACFD
-    to: FACT-SUBJECT-6FDA019B900433CC
-    created_at: "2026-10-30T19:53:06.734Z"
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-  - type: requires_property
-    from: REQ-AUTO-54C43C681D60ACFD
-    to: FACT-PROP-E962F915F6BEACD3
-    created_at: 2026-10-30T19:53:06.734Z
-    created_by: kibi/upsert
-    source: mcp://kibi/upsert
-    id: rel-23fd515501f4
   - type: specified_by
     from: REQ-AUTO-54C43C681D60ACFD
     to: SCEN-corpus-real-prolog
@@ -20,3 +6,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-321c10f9b7b8
+  - type: constrains
+    from: REQ-AUTO-54C43C681D60ACFD
+    to: FACT-SUBJECT-F765600014E53550
+    created_at: 2026-11-02T12:14:08.342Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-cad14ece0284
+  - type: requires_property
+    from: REQ-AUTO-54C43C681D60ACFD
+    to: FACT-PROP-AAEAA668C6FE5485
+    created_at: 2026-11-02T12:14:08.349Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d2914ea2f15b
+  - type: specified_by
+    from: REQ-AUTO-54C43C681D60ACFD
+    to: SCEN-corpus-coverage-gate
+    created_at: 2026-11-02T12:15:25.244Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-c18d8ad5fae3

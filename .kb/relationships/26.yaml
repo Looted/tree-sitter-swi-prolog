@@ -1,0 +1,15 @@
+relationships:
+  - id: rel-b66790626e8b
+    type: validates
+    from: TEST-syntax-unknown-prefix-postfix
+    to: SCEN-syntax-unknown-prefix-postfix
+    created_at: "2026-11-02T12:19:23.870Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: validates
+    from: TEST-syntax-unknown-prefix-postfix
+    to: REQ-AUTO-575A7DACDE738B4E
+    created_at: 2026-11-02T12:19:23.871Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d7422f8ba4a5
