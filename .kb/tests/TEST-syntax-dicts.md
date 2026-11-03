@@ -30,15 +30,15 @@ id: TEST-syntax-dicts
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-b5f75c7486e76e545c6ce194
+    receipt_id: PR-ba27671b4fa701441afd3904
     test_id: TEST-syntax-dicts
     scope: end_to_end
     outcome: passed
-    code_snapshot: e2f8c3823193a7cc259363566c6b69e7814834a1d5c789781e910eef18dc1301
+    code_snapshot: b96f4c994e3fb7d656374a49615746b3438d168f0c1b5f11aad5ffd082a60aaa
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T15:41:23.604Z'
-    finished_at: '2026-11-02T15:41:36.200Z'
-    artifact_digest: 7140a6d341430f8a2d2f1d96eead3f21acb818bd49625d30579a2b39c4c13d7b
+    started_at: '2026-11-03T07:52:21.956Z'
+    finished_at: '2026-11-03T07:52:38.485Z'
+    artifact_digest: 3bcdaf8671bc9ea8434eb81cb9b41a515f68d2539dc891dfd844440180677500
     contract_hash: 9968583773316b2e732e9903df49d3237878d475376f3ee2202fce7ffd59fdcb
     binding_hash: c981c7535fc042fdebfce06c4381b8757f2102d7ade48bd42f4661dcda5b966f
     fingerprint: e67a1b60a44c2a9d0ab59f08a2acf298eba18a2efa3b0d9a553cbc0e8a3c2fc8

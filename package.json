@@ -39,11 +39,10 @@
     "@changesets/cli": "^2.31.1",
     "@stryker-mutator/core": "^10.1.1",
     "c8": "^12.0.0",
-    "kibi-cli": "^2.40.0",
-    "kibi-core": "^0.29.0",
-    "kibi-lang-go": "^1.0.0",
-    "kibi-mcp": "^3.24.0",
-    "kibi-plugin-treesitter": "^3.0.0",
+    "kibi-cli": "^2.41.0",
+    "kibi-core": "^0.30.0",
+    "kibi-mcp": "^3.25.0",
+    "kibi-plugin-treesitter": "^3.1.0",
     "prebuildify": "^6.0.1",
     "tree-sitter": "^0.25.0",
     "tree-sitter-cli": "^0.26.7",
@@ -82,6 +81,15 @@
           }
         }
       }
+    ],
+    "declinedLanguagePacks": [
+      "kibi-lang-go",
+      "kibi-lang-rust",
+      "kibi-lang-python",
+      "kibi-lang-cpp"
+    ],
+    "generatedPaths": [
+      "!package.json"
     ]
   }
 }
