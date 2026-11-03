@@ -31,15 +31,15 @@ id: TEST-lexical-clause-terminator
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-1fe65343775de301334548e7
+    receipt_id: PR-c66df814130a42be3494ae8d
     test_id: TEST-lexical-clause-terminator
     scope: end_to_end
     outcome: passed
-    code_snapshot: e2f8c3823193a7cc259363566c6b69e7814834a1d5c789781e910eef18dc1301
+    code_snapshot: b96f4c994e3fb7d656374a49615746b3438d168f0c1b5f11aad5ffd082a60aaa
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-02T15:41:23.604Z'
-    finished_at: '2026-11-02T15:41:36.200Z'
-    artifact_digest: 7140a6d341430f8a2d2f1d96eead3f21acb818bd49625d30579a2b39c4c13d7b
+    started_at: '2026-11-03T07:52:21.956Z'
+    finished_at: '2026-11-03T07:52:38.485Z'
+    artifact_digest: 3bcdaf8671bc9ea8434eb81cb9b41a515f68d2539dc891dfd844440180677500
     contract_hash: 510d8c2729e71fb232285d0a1aab5e9b8198d43cebfd2753245cdb39a342f10e
     binding_hash: 28bc85894cd49efda2679dc71973021045724c4884e3e46784b65d9035a941d8
     fingerprint: 59c67ecd27d3cff9719bed3258920a4fbcdca1d28ab87b3956a83d398c801fbb
