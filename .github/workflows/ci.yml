@@ -42,7 +42,10 @@ jobs:
 
   test:
     name: Test parser
-    runs-on: ${{matrix.os}}
+    # ubuntu-latest moved to Ubuntu 26.04, which has no libxml2.so.2; the Swift
+    # toolchain that parser-test-action installs is built for 24.04 and needs it.
+    # Keep the matrix name (and so the check name) and run on 24.04.
+    runs-on: ${{matrix.os == 'ubuntu-latest' && 'ubuntu-24.04' || matrix.os}}
     strategy:
       fail-fast: false
       matrix:
