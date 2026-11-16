@@ -90,6 +90,12 @@
     ],
     "generatedPaths": [
       "!package.json"
-    ]
+    ],
+    "setup": {
+      "autoSync": true,
+      "prepareHooks": false,
+      "agentInstructions": true,
+      "ciGate": false
+    }
   }
 }

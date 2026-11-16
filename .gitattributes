@@ -44,3 +44,8 @@ build.zig.zon linguist-generated
 # Java bindings
 pom.xml linguist-generated
 bindings/java/** linguist-generated
+
+# Kibi: merge the symbol manifest and relationship shards by record id.
+# Each clone also needs: git config merge.kibi.driver "npm exec --no -- kibi merge-driver %O %A %B"
+.kb/symbols.yaml merge=kibi
+.kb/relationships/*.yaml merge=kibi
