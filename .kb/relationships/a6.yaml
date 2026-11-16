@@ -20,3 +20,31 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-722863660589
+  - type: implements
+    from: SYM-scanner-scan
+    to: REQ-AUTO-6E8A94EB729DF61C
+    created_at: 2026-11-16T18:03:28.168Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-e8a1dd6badc3
+  - type: implements
+    from: SYM-scanner-scan
+    to: REQ-AUTO-86BD3B0BF0F0C58F
+    created_at: 2026-11-16T18:03:28.175Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-fa01ec1f35ac
+  - type: covered_by
+    from: SYM-scanner-scan
+    to: TEST-lexical-clause-terminator
+    created_at: 2026-11-16T18:03:28.177Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-506f3fff6c22
+  - type: covered_by
+    from: SYM-scanner-scan
+    to: TEST-lexical-dot-in-term
+    created_at: 2026-11-16T18:03:28.180Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-d26f88565875

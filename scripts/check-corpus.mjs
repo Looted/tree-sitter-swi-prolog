@@ -32,6 +32,27 @@ function* walk(dir) {
   }
 }
 
+// Counts the top-level terms of a parsed file (comments and a `#!` line are
+// not terms) and how many of them hold an ERROR or MISSING node.
+function countTerms(tree) {
+  let count = 0;
+  let broken = 0;
+  for (const node of tree.rootNode.namedChildren) {
+    if (node.type === 'comment' || node.type === 'shebang') continue;
+    count++;
+    // An ERROR node has an error too.
+    if (node.hasError) broken++;
+  }
+  return { count, broken };
+}
+
+// The corpus passes when the share of clean terms is at least `min`; an empty
+// corpus passes.
+function meetsMinimum(terms, brokenTerms, min) {
+  const ratio = terms === 0 ? 1 : (terms - brokenTerms) / terms;
+  return { ratio, passed: ratio >= min };
+}
+
 await Parser.init();
 const parser = new Parser();
 parser.setLanguage(await Language.load(wasm));
@@ -46,14 +67,7 @@ for (const dir of dirs) {
   for (const file of walk(dir)) {
     const source = fs.readFileSync(file, 'utf8');
     const tree = parser.parse(source);
-    let broken = 0;
-    let count = 0;
-    for (const node of tree.rootNode.namedChildren) {
-      if (node.type === 'comment' || node.type === 'shebang') continue;
-      count++;
-      // An ERROR node has an error too.
-      if (node.hasError) broken++;
-    }
+    const { count, broken } = countTerms(tree);
     files++;
     terms += count;
     brokenTerms += broken;
@@ -63,7 +77,7 @@ for (const dir of dirs) {
   }
 }
 
-const ratio = terms === 0 ? 1 : (terms - brokenTerms) / terms;
+const { ratio, passed } = meetsMinimum(terms, brokenTerms, min);
 worst.sort((a, b) => b[0] - a[0]);
 for (const [broken, file] of worst.slice(0, 15)) {
   console.log(`${String(broken).padStart(5)}  ${file}`);
@@ -72,4 +86,4 @@ console.log(
   `files ${cleanFiles}/${files} clean, terms ${terms - brokenTerms}/${terms} clean ` +
   `(${(ratio * 100).toFixed(2)}%, minimum ${(min * 100).toFixed(2)}%)`,
 );
-process.exit(ratio >= min ? 0 : 1);
+process.exit(passed ? 0 : 1);

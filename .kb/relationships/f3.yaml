@@ -13,3 +13,24 @@ relationships:
     created_by: kibi/upsert
     source: mcp://kibi/upsert
     id: rel-9d634ef921e6
+  - type: implements
+    from: SYM-check-corpus-meets-minimum
+    to: REQ-AUTO-068378E78CCF8A38
+    created_at: 2026-11-16T18:03:25.841Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-6a588c342c74
+  - type: covered_by
+    from: SYM-check-corpus-meets-minimum
+    to: TEST-corpus-coverage-gate
+    created_at: 2026-11-16T18:03:25.845Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-44c10b7b0f0d
+  - type: covered_by
+    from: SYM-check-corpus-meets-minimum
+    to: TEST-corpus-real-prolog
+    created_at: 2026-11-16T18:03:25.847Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-1600b74b17df

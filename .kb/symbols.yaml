@@ -221,22 +221,6 @@ symbols:
         target: TEST-queries-locals
       - type: implements
         target: REQ-AUTO-8646498CAB4538B3
-  - id: SYM-check-corpus
-    title: check-corpus
-    status: active
-    sourceFile: scripts/check-corpus.mjs
-    symbol_role: module
-    granularity_reason: module-level-behavior
-    origin:
-      kind: agent
-      recorded_at: 2026-10-30T23:31:40.708Z
-    relationships:
-      - type: covered_by
-        target: TEST-corpus-coverage-gate
-      - type: covered_by
-        target: TEST-corpus-real-prolog
-      - type: implements
-        target: REQ-AUTO-068378E78CCF8A38
   - id: SYM-ci-workflow
     title: CI
     status: active
@@ -564,24 +548,6 @@ symbols:
         target: TEST-syntax-unknown-prefix-postfix
       - type: implements
         target: REQ-AUTO-575A7DACDE738B4E
-  - id: SYM-scanner
-    title: scanner
-    status: active
-    sourceFile: src/scanner.c
-    symbol_role: module
-    granularity_reason: module-level-behavior
-    origin:
-      kind: agent
-      recorded_at: 2026-11-02T15:31:15.002Z
-    relationships:
-      - type: covered_by
-        target: TEST-lexical-clause-terminator
-      - type: covered_by
-        target: TEST-lexical-dot-in-term
-      - type: implements
-        target: REQ-AUTO-6E8A94EB729DF61C
-      - type: implements
-        target: REQ-AUTO-86BD3B0BF0F0C58F
   - id: SYM-grammar-clause-end-followers
     title: CLAUSE_END_FOLLOWERS
     status: active
@@ -619,3 +585,65 @@ symbols:
         target: TEST-lexical-clause-terminator
       - type: executable_for
         target: TEST-lexical-dot-in-term
+  - id: SYM-check-corpus-count-terms
+    title: countTerms
+    status: active
+    sourceFile: scripts/check-corpus.mjs
+    origin:
+      kind: agent
+      recorded_at: 2026-11-16T18:03:13.342Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-coverage-gate
+      - type: covered_by
+        target: TEST-corpus-real-prolog
+      - type: implements
+        target: REQ-AUTO-068378E78CCF8A38
+      - type: implements
+        target: REQ-AUTO-54C43C681D60ACFD
+  - id: SYM-check-corpus-meets-minimum
+    title: meetsMinimum
+    status: active
+    sourceFile: scripts/check-corpus.mjs
+    origin:
+      kind: agent
+      recorded_at: 2026-11-16T18:03:25.785Z
+    relationships:
+      - type: covered_by
+        target: TEST-corpus-coverage-gate
+      - type: covered_by
+        target: TEST-corpus-real-prolog
+      - type: implements
+        target: REQ-AUTO-068378E78CCF8A38
+  - id: SYM-scanner-scan
+    title: tree_sitter_swi_prolog_external_scanner_scan
+    status: active
+    sourceFile: src/scanner.c
+    origin:
+      kind: agent
+      recorded_at: 2026-11-16T18:03:28.119Z
+    relationships:
+      - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: covered_by
+        target: TEST-lexical-dot-in-term
+      - type: implements
+        target: REQ-AUTO-6E8A94EB729DF61C
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
+  - id: SYM-scanner-is-layout
+    title: is_layout
+    status: active
+    sourceFile: src/scanner.c
+    origin:
+      kind: agent
+      recorded_at: 2026-11-16T18:03:30.013Z
+    relationships:
+      - type: covered_by
+        target: TEST-lexical-clause-terminator
+      - type: covered_by
+        target: TEST-lexical-dot-in-term
+      - type: implements
+        target: REQ-AUTO-6E8A94EB729DF61C
+      - type: implements
+        target: REQ-AUTO-86BD3B0BF0F0C58F
