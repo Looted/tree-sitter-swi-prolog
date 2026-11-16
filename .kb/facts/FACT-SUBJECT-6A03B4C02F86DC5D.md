@@ -21,3 +21,5 @@ origin:
 id: FACT-SUBJECT-6A03B4C02F86DC5D
 type: fact
 ---
+
+The end token `.` that closes a clause, directive or query. The external scanner (`src/scanner.c`) emits it only when the `.` is followed by layout, a `%` comment or end of input; the follower set is `CLAUSE_END_FOLLOWERS` in `grammar/lexical.js`.

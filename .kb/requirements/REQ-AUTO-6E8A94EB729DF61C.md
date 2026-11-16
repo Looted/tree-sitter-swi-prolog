@@ -27,6 +27,8 @@ semantic_inventory:
 origin:
   kind: agent
   recorded_at: '2026-11-02T15:30:30.650Z'
+  ref: 'Piotr, project thread 2026-11-16: \"Yes I do\" (approving the three agent-authored requirements)'
+  approved_by: Piotr
 id: REQ-AUTO-6E8A94EB729DF61C
 type: req
 ---

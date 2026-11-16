@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-B3CBCD679503281C
 type: fact
 ---
+
+The WebAssembly build of the parser (`tree-sitter-swi_prolog.wasm`, built with `tree-sitter build --wasm`) and its use from the `web-tree-sitter` JavaScript runtime. The native bindings are not part of this subject.

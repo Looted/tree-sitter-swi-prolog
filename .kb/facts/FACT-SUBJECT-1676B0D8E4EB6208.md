@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-1676B0D8E4EB6208
 type: fact
 ---
+
+A numeric literal written with a leading minus sign, such as `-1` or `-2.5`. In this grammar it is not a separate token: it is the prefix operator `-` applied to an unsigned number.

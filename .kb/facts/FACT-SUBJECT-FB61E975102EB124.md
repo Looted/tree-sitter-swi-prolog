@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-FB61E975102EB124
 type: fact
 ---
+
+The lexical layer of the grammar (`grammar/lexical.js` and `src/scanner.c`): Unicode atoms and variables, multi-line quoted text, `%` line comments and `/* */` block comments, and a leading `#!` script line.

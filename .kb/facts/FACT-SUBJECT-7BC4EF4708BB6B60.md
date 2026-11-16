@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-7BC4EF4708BB6B60
 type: fact
 ---
+
+How the parser reads two operands joined by an atom that is not a known infix operator (for example one declared with `op/3`): as an infix operator term at priority 700 (`UNKNOWN_INFIX_PRIORITY` in `grammar/operators.js`), so the clause parses instead of producing an ERROR.

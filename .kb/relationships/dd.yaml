@@ -1,0 +1,29 @@
+relationships:
+  - id: rel-648150062da3
+    type: implements
+    from: SYM-check-corpus-count-terms
+    to: REQ-AUTO-068378E78CCF8A38
+    created_at: "2026-11-16T18:03:13.389Z"
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+  - type: implements
+    from: SYM-check-corpus-count-terms
+    to: REQ-AUTO-54C43C681D60ACFD
+    created_at: 2026-11-16T18:03:13.390Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-ad8ae73c3ebd
+  - type: covered_by
+    from: SYM-check-corpus-count-terms
+    to: TEST-corpus-coverage-gate
+    created_at: 2026-11-16T18:03:13.393Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-86ad31656920
+  - type: covered_by
+    from: SYM-check-corpus-count-terms
+    to: TEST-corpus-real-prolog
+    created_at: 2026-11-16T18:03:13.395Z
+    created_by: kibi/upsert
+    source: mcp://kibi/upsert
+    id: rel-eb377cd92159

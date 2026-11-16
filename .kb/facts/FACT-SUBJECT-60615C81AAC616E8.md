@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-60615C81AAC616E8
 type: fact
 ---
+
+Each term at the top level of a parsed source file (a child of the root `source_file` node): a clause (`head`, `neck`, `body` fields), a directive (`:- Goal.`) or a query (`?- Goal.`). The allowed node types are listed in `grammar/node-types.js` (TOP_LEVEL_TERM_TYPES).

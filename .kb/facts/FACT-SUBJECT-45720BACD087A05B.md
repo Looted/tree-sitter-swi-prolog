@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-45720BACD087A05B
 type: fact
 ---
+
+The changeset check in CI (`.github/workflows/ci.yml`), which runs `changeset status` on pull requests so that every user-visible change carries a `.changeset/` entry. Changes with no user-visible effect add an empty changeset.

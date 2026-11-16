@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-81EA1595EF556825
 type: fact
 ---
+
+The project rule that git tags and GitHub releases are never made manually; only the Release workflow creates them. See also the Release Github subject (`release.github`).

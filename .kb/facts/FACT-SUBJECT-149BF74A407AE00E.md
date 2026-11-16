@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-149BF74A407AE00E
 type: fact
 ---
+
+The tree-sitter tags query `queries/tags.scm`, used by code-navigation tools to find definitions (predicates, modules) and references (calls) in Prolog sources. Its tag kinds are read by `queries/tags.js`.

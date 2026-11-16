@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-8F5452C8401BADA7
 type: fact
 ---
+
+The corpus gate in CI: `scripts/check-corpus.mjs` parses SWI-Prolog's own `boot/` and `library/` sources and fails the build (`--min 0.995`) when the share of top-level terms parsed without errors is below 99.5%.
