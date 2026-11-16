@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-C9A5613BE3BC6B01
 type: fact
 ---
+
+The tree-sitter locals query `queries/locals.scm`, which defines scopes (clause, directive, query) and variable definitions and references so editors can resolve a variable to the other occurrences in the same scope.

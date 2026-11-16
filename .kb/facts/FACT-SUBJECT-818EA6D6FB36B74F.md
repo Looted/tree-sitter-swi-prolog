@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-818EA6D6FB36B74F
 type: fact
 ---
+
+The tree-sitter highlights query `queries/highlights.scm`, which maps syntax nodes (atoms, variables, strings, numbers, comments, operators, clause heads) to highlight captures for editors.

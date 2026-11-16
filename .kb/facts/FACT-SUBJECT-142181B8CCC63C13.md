@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-142181B8CCC63C13
 type: fact
 ---
+
+How the parser handles a prefix or postfix operator that is not in its built-in operator table (`grammar/operators.js`), for example one a program declares with `op/3` at run time. It covers only error recovery for such terms, not the known operators.

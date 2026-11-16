@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-00115C23B0E4C216
 type: fact
 ---
+
+The GitHub side of a release of this package: the `vX.Y.Z` git tag and the GitHub release that `.github/workflows/release.yml` creates when the Version packages pull request is merged. It is not the npm publish or the version bump itself (those come from changesets).

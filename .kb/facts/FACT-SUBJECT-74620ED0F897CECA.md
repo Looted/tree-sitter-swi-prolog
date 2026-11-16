@@ -20,3 +20,5 @@ origin:
 id: FACT-SUBJECT-74620ED0F897CECA
 type: fact
 ---
+
+The literal syntax the parser accepts beyond plain atoms and integers: double-quoted strings, back-quoted strings, `0'c` character codes, radix integers (`16'FF`), digit groups (`1 000 000`, `1_000`), rationals (`1r3`) and special floats (`1.0Inf`, `1.5NaN`).
