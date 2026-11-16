@@ -17,17 +17,17 @@ id: TEST-corpus-real-prolog
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-0ad09365875924fccf210a8c
+    receipt_id: PR-83c2777b133a665015c088cd
     test_id: TEST-corpus-real-prolog
     scope: end_to_end
     outcome: passed
-    code_snapshot: e827b5e9ca42600c59e92d94092a0a4fcb3a55972a701d5e5a0b76093ff99f28
+    code_snapshot: 957086f23a4d6f0a72702eb99ed059d538cdc3d4b4b3d9573dd134624cc9c0ce
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-16T18:01:20.927Z'
-    finished_at: '2026-11-16T18:01:28.206Z'
-    artifact_digest: 433705ab4196fdc5d84d5e1350f5a7a30c9f2ec565e15f1f414dcd3dcd7ed141
+    started_at: '2026-11-16T18:05:28.479Z'
+    finished_at: '2026-11-16T18:05:35.976Z'
+    artifact_digest: 475c25a994b7c60e6e0ba923466739ae8732fd832f90cc39b83385bd6218c0cd
     contract_hash: 662295058add4c7d165413df194ca90d2ab73786888707ede78598dfc99706e6
-    binding_hash: 2c4d3c9fc96f884366a8361aebcbbab1fa26ab194ad5579139c7775cb6ec9459
+    binding_hash: 796e59f49820eeca52760a39c07dfd013d353786328aac116f49cdf8cd7d528b
     fingerprint: 5c68291f608560e286f09a50c79cacf095401f32e3c14ac8008b93e2c2b3ba7b
     fingerprint_components:
       contract: 662295058add4c7d165413df194ca90d2ab73786888707ede78598dfc99706e6

@@ -16,7 +16,8 @@ proof_contract:
       symbol_id: SYM-proof-ends-clause-before
       export: endsClauseBefore
       harness_for:
-        - SYM-scanner
+        - SYM-scanner-scan
+        - SYM-scanner-is-layout
         - SYM-grammar-rules
   domains:
     follower:
@@ -31,20 +32,20 @@ id: TEST-lexical-clause-terminator
 type: test
 proof_receipts:
   - version: kibi.proof-receipt.v2
-    receipt_id: PR-78659ef996ac03931b5b2bbe
+    receipt_id: PR-8f62588220c0e29120643ca3
     test_id: TEST-lexical-clause-terminator
     scope: end_to_end
     outcome: passed
-    code_snapshot: e827b5e9ca42600c59e92d94092a0a4fcb3a55972a701d5e5a0b76093ff99f28
+    code_snapshot: 957086f23a4d6f0a72702eb99ed059d538cdc3d4b4b3d9573dd134624cc9c0ce
     environment_hash: 0fe4faff3abd9383846f773ccd03a2e551c0e1792023b3084ed58b8687bccfaa
-    started_at: '2026-11-16T18:01:20.927Z'
-    finished_at: '2026-11-16T18:01:28.206Z'
-    artifact_digest: 433705ab4196fdc5d84d5e1350f5a7a30c9f2ec565e15f1f414dcd3dcd7ed141
-    contract_hash: 510d8c2729e71fb232285d0a1aab5e9b8198d43cebfd2753245cdb39a342f10e
-    binding_hash: 28bc85894cd49efda2679dc71973021045724c4884e3e46784b65d9035a941d8
-    fingerprint: 59c67ecd27d3cff9719bed3258920a4fbcdca1d28ab87b3956a83d398c801fbb
+    started_at: '2026-11-16T18:05:28.479Z'
+    finished_at: '2026-11-16T18:05:35.976Z'
+    artifact_digest: 475c25a994b7c60e6e0ba923466739ae8732fd832f90cc39b83385bd6218c0cd
+    contract_hash: 9595e1f0481f7b464bcc00832045f83e161c6ab6bac3008f93f2fd72cf724d29
+    binding_hash: 588dddfaa258a4002e7c79fc8499e3aba5e9d9a3152765afb8bbaf04068b6de3
+    fingerprint: 1345857c571ee063a4184eaa4f8b796452205204e6f24c47fe96f9f7988673b0
     fingerprint_components:
-      contract: 510d8c2729e71fb232285d0a1aab5e9b8198d43cebfd2753245cdb39a342f10e
+      contract: 9595e1f0481f7b464bcc00832045f83e161c6ab6bac3008f93f2fd72cf724d29
       integration: af87672080273366855cb4df145063c269d9f3126f8fdd25ceb7fb1373fea76d
       command: 299e4663ffa1f966e4081e6a5aed2b64cbe3a0e010b03f09d04d5616344a1346
       bindings: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
